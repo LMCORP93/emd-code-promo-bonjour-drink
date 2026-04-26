@@ -99,7 +99,7 @@ const { product } = Astro.props;
         target="_blank"
         class="btn-solid rpc-cta"
       >
-        <span>Acheter maintenant</span>
+        <span class="rpc-cta-label">Voir l'offre</span>
         <span class="rpc-cta-arrow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </span>
@@ -276,6 +276,24 @@ const { product } = Astro.props;
     align-items: center;
     gap: 0.75rem;
     flex-wrap: wrap;
+  }
+
+  .rpc-actions .btn-dashed {
+    flex: 1 1 10rem;
+    min-width: 10rem;
+  }
+
+  .rpc-cta {
+    flex: 1 1 11rem;
+    min-width: 11rem;
+    color: #ffffff !important;
+    font-weight: 700;
+  }
+
+  .rpc-cta-label {
+    display: inline-block;
+    color: #ffffff !important;
+    white-space: nowrap;
   }
   @media (max-width: 767px) {
     .rpc-actions {

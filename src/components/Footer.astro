@@ -35,7 +35,7 @@ const reservedFooterRoutes = new Set([
 ]);
 
 const guideLinks = navLinks
-  .filter((link) => !reservedFooterRoutes.has(link.href))
+  .filter((link) => !['/contact', '/mentions-legales', '/politique-de-confidentialite'].includes(link.href))
   .slice(0, 6);
 
 // Legal / information links
