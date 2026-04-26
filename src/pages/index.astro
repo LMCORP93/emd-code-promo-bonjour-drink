@@ -1,0 +1,131 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogHero from '@/components/BlogHero.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
+import SidebarCTA from '@/components/SidebarCTA.astro';
+import FAQSection from '@/components/FAQSection.astro';
+import config from '@/data/site.config';
+
+const product = config.products[0];
+const promoProduct = {
+  ...product,
+  productCategory: config.productCategory,
+  shipping: 'France, Colissimo / Mondial Relay',
+};
+---
+
+<BaseLayout title={config.seo.title} description={config.seo.description}>
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Code promo Bonjour Drink : réduction LMC20',
+    description: config.seo.description,
+    author: { '@type': 'Person', name: config.author.name },
+    publisher: { '@type': 'Organization', name: 'LMC' },
+    mainEntityOfPage: config.domain,
+  })} />
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: config.faq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  })} />
+
+  <BlogHero
+    title="Code promo Bonjour Drink : -20% avec LMC20"
+    description="Le code promo Bonjour Drink vérifié par LMC : réduction active, lien officiel, prix après remise et avis rapide avant de commander."
+    author={config.author.name}
+    authorAvatar={config.author.avatar}
+    date="26 Avril 2026"
+    readingTime="6 min de lecture"
+    breadcrumbs={[{ label: 'Code promo Bonjour Drink', href: '/' }]}
+    bannerImage={product.image}
+    product={{
+      name: product.name,
+      image: product.image,
+      promoCode: product.promoCode,
+      promoPercent: product.promoPercent,
+      originalPrice: product.originalPrice,
+      discountPrice: product.discountPrice,
+      affiliateLink: product.affiliateLink,
+    }}
+  />
+
+  <main style="background-color: #ffffff;">
+    <div class="container-large padding-global">
+      <div class="padding-section-medium">
+        <div class="blog-grid">
+          <div class="content-column">
+            <section id="code-promo" class="mb-8">
+              <div class="rich-text">
+                <h2>Code promo Bonjour Drink actif</h2>
+                <p>Le code à utiliser est <strong>LMC20</strong>. Il donne accès à <strong>-20%</strong> sur Bonjour Drink via le lien partenaire officiel LMC.</p>
+                <p>Bonjour Drink est une boisson fonctionnelle française pensée comme alternative au café classique. La formule associe champignons adaptogènes, plantes et cacao pour un rituel plus doux, sans chercher le pic d’énergie brutal.</p>
+              </div>
+              <ReviewPromoCard product={promoProduct} />
+            </section>
+
+            <TableOfContents items={config.tocItems} />
+
+            <section id="offre" class="seo-block rich-text">
+              <h2>Offre Bonjour Drink : prix avec LMC20</h2>
+              <p>Le prix public indicatif est de <strong>39,00 €</strong>. Avec le code promo <strong>LMC20</strong>, le prix descend autour de <strong>31,20 €</strong>, hors éventuels frais de livraison ou offres temporaires du site officiel.</p>
+              <p>La réduction est surtout intéressante si vous voulez tester Bonjour Drink sans payer le tarif plein. Le point important : passer par le lien affilié LMC avant d’entrer le code au paiement.</p>
+            </section>
+
+            <section id="avis" class="seo-block rich-text">
+              <h2>Notre avis rapide sur Bonjour Drink</h2>
+              <p>Bonjour Drink coche les cases d’un bon produit d’entrée dans les cafés adaptogènes : positionnement français, formule claire, plusieurs saveurs et un usage simple au quotidien.</p>
+              <p>Ce n’est pas le choix le moins cher du marché au prix public. Avec <strong>-20%</strong>, le rapport intérêt/prix devient plus cohérent, surtout pour découvrir l’alternative au café sans s’engager sur une grosse routine.</p>
+              <h3>Pour qui c’est pertinent ?</h3>
+              <p>Pour les personnes qui veulent réduire le café, éviter les coups de nervosité, ou tester une boisson fonctionnelle plus orientée bien-être. Si vous cherchez uniquement un stimulant fort, ce n’est pas forcément le meilleur angle.</p>
+            </section>
+
+            <section id="utilisation" class="seo-block rich-text">
+              <h2>Comment utiliser le code LMC20 ?</h2>
+              <ol>
+                <li>Cliquez sur le lien partenaire Bonjour Drink.</li>
+                <li>Ajoutez le produit au panier sur le site officiel.</li>
+                <li>Entrez le code <strong>LMC20</strong> au paiement.</li>
+                <li>Vérifiez que la remise de <strong>-20%</strong> est bien appliquée avant de valider.</li>
+              </ol>
+              <p>Si le code ne s’applique pas, vérifiez que vous êtes bien passé par le lien partenaire et qu’aucune autre offre incompatible n’est déjà active dans le panier.</p>
+            </section>
+
+            <section id="faq" class="faq-section">
+              <FAQSection faq={config.faq} title="Questions fréquentes sur le code promo Bonjour Drink" />
+            </section>
+          </div>
+
+          <div class="sidebar-column">
+            <div class="sidebar-sticky">
+              <SidebarCTA
+                logoSrc={product.brandLogo}
+                promoCode={product.promoCode}
+                promoPercent={product.promoPercent}
+                originalPrice={product.originalPrice}
+                discountPrice={product.discountPrice}
+                ctaLink={product.affiliateLink}
+                heroImage={product.image}
+                rating={product.rating}
+                reviewCount={product.reviewCount}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .seo-block { margin-top: 2.5rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
+  .faq-section { margin-top: 3rem; }
+  .blog-grid { display: grid; grid-template-columns: minmax(0, 1fr) 22rem; gap: 3rem; align-items: start; }
+  .sidebar-sticky { position: sticky; top: 6rem; }
+  @media (max-width: 991px) { .blog-grid { grid-template-columns: 1fr; } .sidebar-column { display: none; } }
+</style>
