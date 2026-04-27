@@ -7,10 +7,12 @@ import FAQSection from '@/components/FAQSection.astro';
 import ComparisonTable from '@/components/ComparisonTable.astro';
 import ContentImage from '@/components/ContentImage.astro';
 import InnerNote from '@/components/InnerNote.astro';
+import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
 import SidebarCTA from '@/components/SidebarCTA.astro';
 import config from '@/data/site.config';
 
 const product = config.products[0];
+const promoProduct = { ...product, productCategory: config.productCategory, shipping: 'France, Colissimo / Mondial Relay' };
 const pageTitle = 'Boisson Bonjour danger : contre-indications et avis';
 const pageDescription = 'Boisson Bonjour danger : précautions, femme enceinte, intestin irritable, effets secondaires possibles, prise le soir et avis médical avant achat.';
 const faq = [
@@ -97,6 +99,8 @@ const faq = [
           <p>La prudence est d’autant plus importante que Bonjour ne désigne pas une seule tasse universelle. La marque propose des rituels jour et nuit, avec des objectifs différents : énergie, concentration, digestion, détente ou sommeil selon les références. Une formule pensée pour la journée n’a pas la même logique qu’un rituel du soir. Le danger le plus courant n’est donc pas forcément le produit lui-même, mais un mauvais choix de rituel ou une utilisation trop tardive.</p>
         </section>
 
+        <div class="mid-card-wrap"><ReviewPromoCard product={promoProduct} /></div>
+
         <ContentImage src="/images/bonjour-drink-editorial-routine.png" alt="Boisson chaude fonctionnelle Bonjour Drink dans une routine quotidienne" caption="Le bon usage compte autant que la composition : moment de prise, dose, tolérance et profil personnel." />
 
         <section id="composition" class="article-section rich-text">
@@ -120,6 +124,8 @@ const faq = [
           <p>Les cas les plus évidents sont la grossesse, l’allaitement, les traitements médicamenteux, les maladies chroniques, les troubles digestifs sévères, les antécédents d’allergie à des plantes ou champignons, et les situations où votre médecin vous a déjà conseillé d’éviter certains compléments. Dans ces cas, une recherche Google ne suffit pas. Même une page détaillée ne peut pas remplacer un avis médical individualisé.</p>
           <p>Il faut aussi éviter l’empilement. Tester Bonjour Drink en même temps qu’un nouveau complément, un changement alimentaire, un nouveau café, un médicament ou une cure bien-être rend l’interprétation impossible. Si un inconfort apparaît, vous ne saurez pas d’où il vient. Le test le plus propre consiste à garder vos habitudes stables et à introduire Bonjour seul, en petite quantité au départ.</p>
         </section>
+
+        <div class="mid-card-wrap"><ReviewPromoCard product={promoProduct} /></div>
 
         <section id="femme-enceinte" class="article-section rich-text">
           <h2>Bonjour Drink femme enceinte : prudence obligatoire</h2>
@@ -149,6 +155,8 @@ const faq = [
           <p>Il faut aussi distinguer effet secondaire et déception produit. Ne rien ressentir n’est pas forcément un problème médical ; cela peut simplement signifier que Bonjour Drink ne change pas grand-chose pour vous. Le produit doit être jugé sur la régularité, le plaisir, la tolérance, le prix réel avec ou sans code promo, et la cohérence avec votre routine.</p>
         </section>
 
+        <div class="mid-card-wrap"><ReviewPromoCard product={promoProduct} /></div>
+
         <InnerNote emoji="⚠️" text="Cette page aide à trier les précautions, mais ne remplace pas un avis médical. En cas de grossesse, allaitement, maladie, traitement ou doute sérieux, demandez conseil avant consommation." />
 
         <section id="verdict" class="article-section rich-text">
@@ -173,5 +181,6 @@ const faq = [
   .article-section h2 { margin: 0 0 .85rem; line-height: 1.2; }
   .article-section p { margin: 0; line-height: 1.72; color: #444; }
   .article-section p + p { margin-top: 1rem; }
+  .mid-card-wrap { margin: 2rem 0 2.1rem; }
   .faq-section { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
 </style>

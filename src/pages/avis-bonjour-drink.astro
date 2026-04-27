@@ -8,9 +8,11 @@ import FAQSection from '@/components/FAQSection.astro';
 import ComparisonTable from '@/components/ComparisonTable.astro';
 import ContentImage from '@/components/ContentImage.astro';
 import InnerNote from '@/components/InnerNote.astro';
+import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
 import config from '@/data/site.config';
 
 const topProduct = config.products[0];
+const promoProduct = { ...topProduct, productCategory: config.productCategory, shipping: 'France, Colissimo / Mondial Relay' };
 
 const pageTitle = 'Bonjour Drink avis 2026 : test, goût et verdict';
 const pageDescription = 'Avis Bonjour Drink 2026 : test éditorial, goût, composition, Trustpilot, Yuka, rapport qualité-prix, méthode de notation et verdict avant achat.';
@@ -140,6 +142,8 @@ const faq = [
           <p>Le code promo améliore la logique d’essai, mais il ne doit pas être le seul argument. Une remise rend le premier achat plus rationnel ; elle ne transforme pas un produit inadapté en bon achat. Avant de commander, vérifiez le prix final dans le panier, la formule choisie, les frais éventuels et les conditions de remboursement.</p>
         </section>
 
+        <div class="mid-card-wrap"><ReviewPromoCard product={promoProduct} /></div>
+
         <section id="precautions" class="article-section rich-text">
           <h2>Danger, contre-indications et profils sensibles</h2>
           <p>Pour éviter la cannibalisation, cette page avis ne détaille pas tout le cluster santé. La réponse complète est sur notre page dédiée <a href="/boisson-bonjour-danger/">boisson Bonjour danger, contre-indications et femme enceinte</a>. En résumé, Bonjour Drink reste un complément alimentaire : il faut être prudent en cas de grossesse, allaitement, traitement médical, maladie chronique, allergie ou intestin irritable.</p>
@@ -168,5 +172,6 @@ const faq = [
   .article-section p { margin: 0; line-height: 1.72; color: #444; }
   .article-section p + p { margin-top: 1rem; }
   .method-box { background:#f8f4ec; border:1px solid #eadfce; border-radius:12px; padding:1.4rem; }
+  .mid-card-wrap { margin: 2rem 0 2.1rem; }
   .faq-section { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
 </style>
