@@ -130,10 +130,15 @@ const config: SiteConfig = {
     { id: 'avis', label: 'Notre avis' },
     { id: 'composition', label: 'Composition' },
     { id: 'utilisation', label: 'Utiliser le code' },
+    { id: 'formule', label: 'Formule' },
+    { id: 'questions-achat', label: 'Avis et précautions' },
     { id: 'verdict', label: 'Verdict' },
     { id: 'faq', label: 'FAQ' },
   ],
-  pages: [{ type: 'blog', label: 'Code promo', slug: '/' }],
+  pages: [
+    { type: 'blog', label: 'Code promo', slug: '/' },
+    { type: 'blog', label: 'Avis Bonjour', slug: '/avis-bonjour-drink/' },
+  ],
 };
 
 export default config;

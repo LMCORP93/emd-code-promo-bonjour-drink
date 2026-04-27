@@ -1,0 +1,169 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogHero from '@/components/BlogHero.astro';
+import FirstReview from '@/components/FirstReview.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
+import SidebarCTA from '@/components/SidebarCTA.astro';
+import FAQSection from '@/components/FAQSection.astro';
+import ComparisonTable from '@/components/ComparisonTable.astro';
+import ContentImage from '@/components/ContentImage.astro';
+import InnerNote from '@/components/InnerNote.astro';
+import config from '@/data/site.config';
+
+const topProduct = config.products[0];
+
+const pageTitle = 'Bonjour Drink avis 2026 : composition, danger et verdict';
+const pageDescription = 'Avis complet sur Bonjour Drink : formule à 2 700 mg, rituels jour et nuit, Trustpilot, danger, contre-indications, femme enceinte, digestion et verdict.';
+const faq = [
+  { question: 'Quel est notre avis sur Bonjour Drink ?', answer: 'Notre avis est positif sur le positionnement : formule française, rituels jour/nuit, ingrédients naturels et forte preuve sociale. La prudence reste nécessaire pour les publics sensibles.' },
+  { question: 'Bonjour Drink est-il une arnaque ?', answer: 'Rien dans les informations disponibles ne permet de qualifier Bonjour Drink d’arnaque. La marque dispose d’un site officiel, d’avis Trustpilot annoncés et d’une garantie. Il faut surtout éviter les faux codes promo publiés par des sites tiers.' },
+  { question: 'Bonjour Drink est-il noté sur Yuka ?', answer: 'Les requêtes autour de Yuka existent, mais l’avis Yuka peut varier selon les références et les données disponibles. Il ne remplace pas la lecture de la composition ni les précautions médicales.' },
+  { question: 'Bonjour Drink contient-il des champignons ?', answer: 'Oui, la marque parle d’extraits biologiques français de plantes et champignons, avec notamment Lion’s Mane, cordyceps, chaga ou reishi selon les rituels.' },
+  { question: 'Bonjour Drink convient-il à l’intestin irritable ?', answer: 'La tolérance digestive est individuelle. En cas d’intestin irritable, commencez prudemment et demandez un avis médical si vous avez un terrain sensible.' },
+  { question: 'Où acheter Bonjour Drink ?', answer: 'Le plus sûr est de passer par le site officiel Bonjour Drink afin d’obtenir l’offre active, les garanties et les conditions de remboursement.' },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) })} />
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'Review', itemReviewed: { '@type': 'Product', name: 'Bonjour Drink', brand: { '@type': 'Brand', name: 'Bonjour' } }, author: { '@type': 'Person', name: config.author.name }, reviewRating: { '@type': 'Rating', ratingValue: topProduct.rating, bestRating: 10 }, reviewBody: pageDescription })} />
+
+  <BlogHero
+    title={pageTitle}
+    description="Notre avis complet sur Bonjour Drink : ce que la formule promet, ce que les avis clients suggèrent, les points forts, les limites et les précautions à respecter."
+    author={config.author.name}
+    authorAvatar={config.author.avatar}
+    date="27 avril 2026"
+    readingTime="14 min de lecture"
+    breadcrumbs={[{ label: 'Avis Bonjour Drink', href: '/avis-bonjour-drink/' }]}
+    bannerImage="https://bonjourdrink.co/cdn/shop/files/BonjourDrink-7D-2-5-M_1_1618b982-cd73-4a41-a692-8824ed3e45d4.webp?v=1755870452"
+    product={{ name: topProduct.name, image: topProduct.image, promoCode: topProduct.promoCode, promoPercent: topProduct.promoPercent, originalPrice: topProduct.originalPrice, discountPrice: topProduct.discountPrice, affiliateLink: topProduct.affiliateLink }}
+    heroButton={{ text: 'Voir Bonjour Drink', href: topProduct.affiliateLink, external: true }}
+    showOfferBlock={false}
+  />
+
+  <main style="background-color:#ffffff;">
+    <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
+      <div class="content-column">
+        <div id="intro">
+        <FirstReview
+          tag="En bref"
+          heading="Résumé rapide"
+          paragraphs={[
+            'Bonjour Drink part d’une bonne idée : remplacer ou compléter le rituel café par une boisson chaude plus fonctionnelle, formulée avec des extraits biologiques français de plantes et champignons. La promesse couvre l’énergie, la concentration, la digestion, l’immunité, le sommeil et le bien-être général.',
+            'Notre avis est favorable sur la cohérence de gamme et la transparence des précautions. En revanche, il faut rester lucide : Bonjour est un complément alimentaire, pas un traitement. Les ressentis clients sont intéressants, mais ils ne remplacent pas un avis médical ni une évaluation individuelle.'
+          ]}
+          assets={[
+            '2 700 mg d’extraits biologiques français par tasse',
+            'Rituels jour et nuit distincts',
+            'Formule vegan, sans sucres ajoutés, sans gluten, sans additifs',
+            'Garantie 60 jours satisfait ou remboursé annoncée'
+          ]}
+          considerations={[
+            'Pas adapté à toutes les situations médicales sans avis professionnel',
+            'Tolérance digestive variable selon les personnes',
+            'Les bénéfices ressentis restent individuels'
+          ]}
+          product={{ brandName: 'Bonjour', brandLogoSrc: topProduct.brandLogo, rating: topProduct.rating, reviewLabel: 'Avis LMC 2026', ctaText: 'Voir l’offre', ctaLink: topProduct.affiliateLink }}
+        />
+
+        </div>
+
+
+        <div class="mid-card-wrap"><ReviewPromoCard product={{ ...topProduct, productCategory: config.productCategory }} /></div>
+
+        <TableOfContents items={[
+          { id: 'avis', label: 'Notre avis' },
+          { id: 'marque', label: 'La marque Bonjour' },
+          { id: 'composition', label: 'Composition' },
+          { id: 'bienfaits', label: 'Bienfaits ressentis' },
+          { id: 'danger', label: 'Danger et précautions' },
+          { id: 'yuka-trustpilot', label: 'Yuka et Trustpilot' },
+          { id: 'verdict', label: 'Verdict' },
+          { id: 'faq', label: 'FAQ' },
+        ]} />
+
+        <section id="avis" class="article-section rich-text">
+          <h2>Bonjour Drink avis : notre résumé honnête</h2>
+          <p>Bonjour Drink est intéressant parce qu’il répond à une vraie tendance : les consommateurs veulent garder le plaisir d’une boisson chaude, mais avec une dimension plus fonctionnelle que le café classique. Beaucoup cherchent une énergie plus stable, moins de nervosité, une meilleure concentration ou une routine du soir plus apaisante. Bonjour s’inscrit précisément dans cette attente, avec une gamme de rituels jour et nuit plutôt qu’un produit unique présenté comme solution à tout.</p>
+          <p>Le point fort principal est la cohérence du positionnement. La marque annonce 2 700 mg d’extraits biologiques français de plantes et champignons par tasse, une formulation avec un laboratoire français spécialisé, une extraction biologique réalisée en France, des contrôles par Phytocontrol et une traçabilité complète. Ce sont des arguments plus solides qu’une simple poudre tendance avec trois mots-clés marketing sur l’étiquette.</p>
+          <p>Notre réserve porte sur l’interprétation des bénéfices. Les clients peuvent ressentir une énergie plus régulière, un esprit plus clair, une digestion facilitée, une réduction des fringales ou un sommeil de meilleure qualité. Ces retours sont utiles pour comprendre l’expérience produit, mais ils restent subjectifs. Ils ne démontrent pas que le produit aura le même effet chez tout le monde. C’est pour cela que notre avis reste positif mais prudent.</p>
+        </section>
+
+        <div class="mid-card-wrap"><ReviewPromoCard product={{ ...topProduct, productCategory: config.productCategory }} /></div>
+
+        <section id="marque" class="article-section rich-text">
+          <h2>La marque Bonjour : que sait-on ?</h2>
+          <p>Bonjour se présente comme une marque française de rituels bien-être. Le discours est très orienté quotidien : une boisson gourmande, simple à intégrer, disponible en plusieurs saveurs et pensée pour accompagner différents moments de la journée. C’est un angle pertinent, car les compléments en poudre fonctionnent rarement s’ils sont vécus comme une contrainte. La routine compte autant que la formule.</p>
+          <p>Le fondateur met en avant une formule scientifiquement travaillée avec un laboratoire français de référence spécialisé en compléments alimentaires. Il mentionne aussi des extraits biologiques français de plantes et champignons, une fabrication, des tests et un assemblage en France, ainsi que des analyses régulières par Phytocontrol. Ces informations permettent d’éviter d’inventer une histoire de marque : on peut s’appuyer sur ce qui est affirmé, sans ajouter de promesse médicale.</p>
+          <p>La marque insiste également sur le naturel : vegan, sans sucres ajoutés, sans additifs, sans gluten. Pour un public qui cherche une alternative au café ou aux boissons sucrées, c’est un vrai avantage. Le produit ne vise pas seulement les sportifs ou les biohackers ; il parle aussi aux personnes qui veulent un rituel plus doux, plus gourmand et plus compatible avec une routine bien-être.</p>
+        </section>
+
+        <ContentImage src="https://bonjourdrink.co/cdn/shop/files/BonjourDrink-7D-1-3-S__2.webp?v=1766774986" alt="Bonjour Drink produit et rituel" caption="Le succès potentiel de Bonjour repose autant sur le goût et la régularité du rituel que sur la liste d’ingrédients." />
+
+        <section id="composition" class="article-section rich-text">
+          <h2>Composition Bonjour Drink : les ingrédients importants</h2>
+          <p>La formule jour cible l’énergie, la concentration et le confort digestif. Elle comprend notamment du ginseng, du Lion’s Mane, du cordyceps, de la mauve et du chaga. Le ginseng est traditionnellement associé à la vitalité et à la récupération. Le Lion’s Mane est souvent recherché pour la clarté mentale. Le cordyceps est positionné sur l’énergie naturelle et durable. La mauve et le chaga renforcent l’angle digestif.</p>
+          <p>La formule nuit a une logique différente. On retrouve du reishi, de la passiflore, de la L-théanine, de la camomille et de l’anis vert. Cette sélection vise plutôt la relaxation, le calme mental, la digestion du soir et la préparation au sommeil. La différence jour/nuit est un vrai point positif. Beaucoup de produits bien-être mélangent trop d’objectifs dans une seule formule. Ici, la segmentation permet de choisir selon le moment.</p>
+          <p>Le dosage annoncé de 2 700 mg par tasse est central. Il donne un repère clair, même si l’efficacité dépend ensuite de la qualité des extraits, de la formule exacte, de la régularité d’utilisation et de la sensibilité individuelle. Le fait que les extraits soient présentés comme biologiques et français est aussi important pour la perception de qualité, surtout dans une catégorie où les consommateurs se méfient des poudres importées et des mélanges opaques.</p>
+          <p>Enfin, les saveurs ne doivent pas être sous-estimées. Bonjour revendique une formule gourmande disponible en plusieurs rituels. Une boisson fonctionnelle peut avoir la meilleure fiche technique du monde ; si elle est mauvaise, elle ne sera pas consommée assez longtemps pour être jugée. L’expérience gustative est donc un critère réel de notre avis, pas un détail secondaire.</p>
+        </section>
+
+        <ComparisonTable title="Formules Bonjour : lecture rapide" headers={[{ label: 'Rituel' }, { label: 'Objectif principal' }]} rows={[
+          { cells: ['Jour : ginseng, Lion’s Mane, cordyceps, mauve, chaga', 'Énergie, concentration, digestion'], highlight: true },
+          { cells: ['Nuit : reishi, passiflore, L-théanine, camomille, anis vert', 'Détente, digestion du soir, sommeil'] },
+          { cells: ['Base commune annoncée', '2 700 mg d’extraits biologiques français par tasse'] },
+          { cells: ['Positionnement nutritionnel', 'Vegan, sans sucres ajoutés, sans gluten, sans additifs'] },
+        ]} />
+
+        <section id="bienfaits" class="article-section rich-text">
+          <h2>Bienfaits ressentis : énergie, digestion, sommeil</h2>
+          <p>Les bienfaits rapportés par les clients se regroupent autour de trois grands axes. Le premier est l’énergie : énergie plus régulière, moins de nervosité, esprit plus clair, meilleure concentration. C’est probablement l’angle le plus fort pour les rituels jour, car il répond à une frustration fréquente du café classique : pic, agitation, puis baisse d’énergie.</p>
+          <p>Le deuxième axe est digestif. Bonjour parle de digestion facilitée, de confort digestif et de réduction des fringales. C’est un angle intéressant, notamment parce que la boisson est sans sucres ajoutés et que certains ingrédients sont positionnés sur l’estomac ou l’intestin. Mais il faut rester individuel : une personne peut se sentir mieux avec un rituel chaud et doux, tandis qu’une autre peut être sensible à certains actifs ou à la poudre elle-même.</p>
+          <p>Le troisième axe concerne le calme, l’équilibre et le sommeil. Le rituel nuit est plus cohérent pour cette attente que les formules jour. La présence de passiflore, L-théanine, camomille, reishi et anis vert donne une logique de détente. Cela ne signifie pas que Bonjour remplace une bonne hygiène de sommeil, mais cela peut devenir un signal de routine : on ralentit, on prépare une boisson, on évite un café tardif, on installe une transition vers la soirée.</p>
+        </section>
+
+        <InnerNote emoji="⚠️" text="Les avis clients sont utiles pour comprendre les ressentis, mais ils ne prouvent pas un effet identique chez tout le monde. Bonjour reste un complément alimentaire." />
+
+        <section id="danger" class="article-section rich-text">
+          <h2>Bonjour Drink danger : les précautions à respecter</h2>
+          <p>La question du danger revient souvent, et elle mérite une réponse équilibrée. Un produit naturel n’est pas automatiquement adapté à tout le monde. Bonjour contient des plantes et champignons, avec des objectifs énergie, digestion ou sommeil selon les rituels. Pour un adulte en bonne santé, cela peut s’intégrer dans une routine. Pour une personne enceinte, allaitante, malade ou sous traitement, la situation est différente.</p>
+          <p>La marque donne elle-même la bonne limite : Bonjour est un complément alimentaire et n’a pas vocation à diagnostiquer, traiter ou prévenir des maladies. En cas de maladie, grossesse, allaitement ou traitement en cours, il faut consulter un médecin avant toute complémentation. Cette mention est essentielle pour répondre aux recherches “Bonjour Drink femme enceinte”, “boisson Bonjour contre indication” ou “BonjourDrink avis médical”.</p>
+          <p>Concernant l’intestin irritable, il faut éviter les réponses catégoriques. Certains utilisateurs peuvent apprécier une boisson chaude sans sucre, d’autres peuvent réagir à certains ingrédients, fibres, arômes ou extraits. Si vous avez un terrain digestif sensible, commencez par une petite quantité, observez votre tolérance et arrêtez si un inconfort apparaît. Le confort digestif promis par une marque ne garantit pas une tolérance universelle.</p>
+          <p>Enfin, attention au moment de consommation. Les rituels jour sont pensés pour l’énergie et la concentration. Si vous êtes sensible, les prendre tard peut être moins pertinent. Pour le soir, la logique est plutôt de choisir le rituel nuit. Cette distinction simple peut éviter une partie des mauvaises expériences.</p>
+        </section>
+
+        <section id="yuka-trustpilot" class="article-section rich-text">
+          <h2>Bonjour Drink Trustpilot, Yuka et avis clients</h2>
+          <p>Trustpilot est un signal de réassurance important pour Bonjour. Le fondateur indique une note de 4,9/5 sur plus de 20 000 avis. Si ce volume est vérifié au moment de l’achat, c’est un indicateur fort de satisfaction client. Il faut toutefois lire plusieurs avis, pas seulement la note moyenne : goût, livraison, service client, remboursement, effets ressentis et tolérance sont les points les plus utiles.</p>
+          <p>Yuka répond à une autre logique. Les utilisateurs cherchent souvent “café Bonjour avis Yuka” ou “BonjourDrink Yuka” pour obtenir un score rapide. C’est compréhensible, mais un score applicatif ne remplace pas une analyse complète. Il peut aider sur certains critères nutritionnels, mais il ne juge pas toujours finement la pertinence d’un rituel, la qualité d’extraction, le contexte d’usage ou les précautions individuelles.</p>
+          <p>Notre méthode consiste donc à croiser les signaux : discours de la marque, composition annoncée, précautions, avis clients, conditions de remboursement et cohérence de l’offre. Aucun signal seul ne suffit. Une note Trustpilot élevée ne garantit pas que le produit vous conviendra ; une question Yuka ne doit pas faire oublier les conseils médicaux en cas de situation sensible.</p>
+        </section>
+
+        <div class="mid-card-wrap"><ReviewPromoCard product={{ ...topProduct, productCategory: config.productCategory }} /></div>
+
+        <section id="verdict" class="article-section rich-text">
+          <h2>Verdict : faut-il acheter Bonjour Drink ?</h2>
+          <p>Oui, Bonjour Drink mérite d’être testé si vous cherchez une boisson bien-être française, gourmande, sans sucres ajoutés, avec une vraie logique de rituels et une promesse plus fonctionnelle qu’un café classique. La marque semble forte sur la preuve sociale, le positionnement qualité et la cohérence des formules jour/nuit. La garantie 60 jours réduit aussi le risque d’un premier achat.</p>
+          <p>Non, ce n’est pas un produit à acheter si vous attendez une solution médicale, un effet garanti ou une réponse à une pathologie. Les promesses doivent rester dans le champ du bien-être et du ressenti. Les personnes enceintes, allaitantes, malades, sous traitement ou avec une sensibilité digestive importante doivent demander un avis médical avant d’utiliser Bonjour.</p>
+          <p>Notre recommandation finale est simple : vérifiez l’offre officielle, choisissez le rituel adapté à votre moment de consommation, commencez progressivement, puis jugez sur la régularité, le goût et votre tolérance. C’est la meilleure façon d’avoir un avis honnête sur Bonjour Drink, au-delà des notes, codes promo et témoignages.</p>
+          <p>Pour un premier achat, le plus rationnel est de ne pas empiler plusieurs nouveautés en même temps. Gardez votre alimentation habituelle, notez le moment de prise, la saveur, la digestion, l’énergie et le sommeil pendant quelques jours. Ce suivi simple évite de confondre l’effet du produit avec un changement de café, de rythme, de stress ou de repas. Si l’expérience est bonne, le produit peut devenir un rituel quotidien. Si elle ne l’est pas, la garantie et le service client deviennent les points à regarder.</p>
+        </section>
+
+        <section id="faq" class="faq-section"><FAQSection faq={faq} title="FAQ Avis Bonjour Drink" /></section>
+      </div>
+      <aside class="sidebar-column"><div class="sidebar-sticky"><SidebarCTA logoSrc={topProduct.brandLogo} promoCode={topProduct.promoCode} promoPercent={topProduct.promoPercent} originalPrice={topProduct.originalPrice} discountPrice={topProduct.discountPrice} ctaLink={topProduct.affiliateLink} heroImage={topProduct.image} rating={topProduct.rating} reviewCount={topProduct.reviewCount} /></div></aside>
+    </div></div></div>
+  </main>
+</BaseLayout>
+
+<style>
+  .article-section { margin-top: 2.1rem; }
+  .article-section h2 { margin: 0 0 .85rem; line-height: 1.2; }
+  .article-section h3 { margin: 1.35rem 0 .6rem; font-size: 1.2rem; }
+  .article-section p { margin: 0; line-height: 1.72; color: #444; }
+  .article-section p + p { margin-top: 1rem; }
+  .mid-card-wrap { margin: 2rem 0 2.1rem; }
+  .faq-section { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
+</style>
