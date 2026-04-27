@@ -83,8 +83,8 @@ const products: Product[] = [
 ];
 
 const config: SiteConfig = {
-  domain: 'https://emd-code-promo-bonjour-drink.pages.dev',
-  isIndexable: false,
+  domain: 'https://code-promo-bonjour-drink.fr',
+  isIndexable: true,
   siteName: 'Code Promo Bonjour Drink',
   brand: products[0].brand,
   product: products[0].name,
@@ -106,7 +106,7 @@ const config: SiteConfig = {
     description: 'Code promo Bonjour Drink vérifié : LMC20 pour -20%. Prix après remise, avis complet, composition et lien partenaire officiel.',
     ogImage: '/og-image.jpg',
   },
-  analyticsMeasurementId: '',
+  analyticsMeasurementId: 'G-8XGKBGYF0R',
   breadcrumbs: [{ label: 'Code promo Bonjour Drink', href: '/' }],
   quickSummary: {
     assets: ['Code LMC20 vérifié', 'Réduction -20% active', 'Lien partenaire officiel', 'Marque française', 'Avis éditorial complet'],
