@@ -120,7 +120,7 @@ const config: SiteConfig = {
     { question: 'Combien coûte Bonjour Drink avec le code promo ?', answer: 'Le prix public indicatif est de 39,00 €. Avec -20%, le prix descend autour de 31,20 €, hors frais de livraison ou offres temporaires.' },
     { question: 'Bonjour Drink remplace-t-il le café ?', answer: 'Bonjour Drink se présente comme une alternative plus douce au café, avec cacao, plantes et champignons adaptogènes. L’objectif est une routine plus stable, pas un effet stimulant brutal.' },
     { question: 'Pourquoi le code promo ne fonctionne pas ?', answer: 'Le code peut ne pas fonctionner si vous n’êtes pas passé par le lien partenaire, si une autre offre est déjà active ou si le panier contient un produit non éligible. Le bon réflexe est de repartir du lien officiel puis de retester LMC20.' },
-    { question: 'Bonjour Drink est-il adapté à tout le monde ?', answer: 'Comme pour tout complément ou boisson fonctionnelle, il faut rester prudent en cas de grossesse, traitement médical ou sensibilité particulière. En cas de doute, demandez un avis professionnel.' },
+    { question: 'Bonjour Drink est-il adapté à tout le monde ?', answer: 'Comme pour tout complément ou boisson fonctionnelle, il faut rester prudent en cas de grossesse, allaitement, traitement médical, intestin irritable ou sensibilité particulière. La page danger détaille ces précautions.' },
   ],
   products,
   tocItems: [
@@ -131,13 +131,14 @@ const config: SiteConfig = {
     { id: 'composition', label: 'Composition' },
     { id: 'utilisation', label: 'Utiliser le code' },
     { id: 'formule', label: 'Formule' },
-    { id: 'questions-achat', label: 'Avis et précautions' },
+    { id: 'questions-achat', label: 'Questions avant achat' },
     { id: 'verdict', label: 'Verdict' },
     { id: 'faq', label: 'FAQ' },
   ],
   pages: [
     { type: 'blog', label: 'Code promo', slug: '/' },
     { type: 'blog', label: 'Avis Bonjour', slug: '/avis-bonjour-drink/' },
+    { type: 'blog', label: 'Danger', slug: '/boisson-bonjour-danger/' },
   ],
 };
 

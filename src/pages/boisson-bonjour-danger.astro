@@ -1,0 +1,177 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogHero from '@/components/BlogHero.astro';
+import FirstReview from '@/components/FirstReview.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+import FAQSection from '@/components/FAQSection.astro';
+import ComparisonTable from '@/components/ComparisonTable.astro';
+import ContentImage from '@/components/ContentImage.astro';
+import InnerNote from '@/components/InnerNote.astro';
+import SidebarCTA from '@/components/SidebarCTA.astro';
+import config from '@/data/site.config';
+
+const product = config.products[0];
+const pageTitle = 'Boisson Bonjour danger : contre-indications et avis';
+const pageDescription = 'Boisson Bonjour danger : précautions, femme enceinte, intestin irritable, effets secondaires possibles, prise le soir et avis médical avant achat.';
+const faq = [
+  { question: 'La boisson Bonjour est-elle dangereuse ?', answer: 'Pour un adulte en bonne santé, Bonjour Drink n’est pas présenté comme dangereux aux doses recommandées. La prudence reste nécessaire en cas de grossesse, allaitement, maladie, traitement médical ou sensibilité digestive.' },
+  { question: 'Quelles sont les contre-indications de Bonjour Drink ?', answer: 'Les principales précautions concernent les femmes enceintes ou allaitantes, les personnes sous traitement, les pathologies connues, les allergies à certains ingrédients, et les profils digestifs sensibles.' },
+  { question: 'Bonjour Drink convient-il à une femme enceinte ?', answer: 'Par prudence, une femme enceinte ou allaitante doit demander un avis médical avant de consommer Bonjour Drink ou tout complément alimentaire contenant plantes et champignons.' },
+  { question: 'Peut-on boire Bonjour Drink avec un intestin irritable ?', answer: 'La tolérance dépend des personnes. En cas d’intestin irritable, il vaut mieux commencer par une petite quantité, observer la digestion et demander conseil si les symptômes sont importants.' },
+  { question: 'Peut-on boire Bonjour Drink le soir ?', answer: 'Les rituels jour sont plus cohérents le matin ou en début d’après-midi. Pour le soir, il faut plutôt regarder le rituel nuit, en évitant les formules orientées énergie si vous êtes sensible.' },
+  { question: 'Bonjour Drink a-t-il des effets secondaires ?', answer: 'Les effets indésirables possibles restent individuels : inconfort digestif, gêne liée à un ingrédient, nervosité si le rituel choisi ne convient pas, ou interaction potentielle avec une situation médicale.' },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) })} />
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: pageTitle,
+    description: pageDescription,
+    author: { '@type': 'Person', name: config.author.name },
+    publisher: { '@type': 'Organization', name: 'LMC' },
+    mainEntityOfPage: `${config.domain}/boisson-bonjour-danger/`,
+    datePublished: '2026-04-27',
+    dateModified: '2026-04-27',
+  })} />
+
+  <BlogHero
+    title={pageTitle}
+    description="Réponse prudente et structurée : composition, profils à risque, grossesse, digestion sensible, prise le soir et signaux qui doivent mener à demander un avis médical."
+    author={config.author.name}
+    authorAvatar={config.author.avatar}
+    date="27 avril 2026"
+    readingTime="13 min de lecture"
+    breadcrumbs={[{ label: 'Boisson Bonjour danger', href: '/boisson-bonjour-danger/' }]}
+    bannerImage="/images/bonjour-drink-editorial-ingredients.png"
+    product={{ name: product.name, image: product.image, promoCode: product.promoCode, promoPercent: product.promoPercent, originalPrice: product.originalPrice, discountPrice: product.discountPrice, affiliateLink: product.affiliateLink }}
+    heroButton={{ text: 'Voir l’offre officielle', href: product.affiliateLink, external: true }}
+    showOfferBlock={false}
+  />
+
+  <main style="background-color:#ffffff;">
+    <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
+      <div class="content-column">
+        <section id="en-bref">
+          <FirstReview
+            tag="Santé & précautions"
+            heading="Boisson Bonjour danger : réponse courte"
+            paragraphs={[
+              'La boisson Bonjour n’est pas à traiter comme un médicament dangereux par défaut. C’est une boisson fonctionnelle, vendue comme complément alimentaire, avec des plantes, des champignons adaptogènes et des ingrédients de routine bien-être. Pour un adulte en bonne santé qui respecte les doses, le risque principal n’est pas un danger grave attendu, mais une mauvaise adéquation avec son profil, son moment de consommation ou sa tolérance digestive.',
+              'La vraie réponse est donc nuancée : Bonjour Drink peut être pertinent pour remplacer un café ou installer un rituel plus doux, mais il ne convient pas automatiquement à tout le monde. Les personnes enceintes, allaitantes, sous traitement, avec maladie chronique, allergie connue ou intestin irritable doivent être plus prudentes et demander conseil avant de tester.'
+            ]}
+            assets={[
+              'Formule française annoncée avec plantes et champignons',
+              'Rituels jour et nuit distincts',
+              'Alternative au café, pas traitement médical',
+              'Code LMC20 disponible si le produit est adapté'
+            ]}
+            considerations={[
+              'Avis médical nécessaire pour les profils sensibles',
+              'Tolérance digestive individuelle',
+              'Rituel jour à éviter tard si vous êtes sensible',
+              'Effets ressentis non garantis'
+            ]}
+            product={{ brandName: product.brand, brandLogoSrc: product.brandLogo, rating: product.rating, reviewLabel: 'Note éditoriale LMC expliquée', ctaText: 'Voir Bonjour', ctaLink: product.affiliateLink }}
+          />
+        </section>
+
+        <TableOfContents items={[
+          { id: 'danger-ou-pas', label: 'Danger ou pas ?' },
+          { id: 'composition', label: 'Composition à surveiller' },
+          { id: 'contre-indications', label: 'Contre-indications' },
+          { id: 'femme-enceinte', label: 'Femme enceinte' },
+          { id: 'intestin-irritable', label: 'Intestin irritable' },
+          { id: 'soir', label: 'Le soir' },
+          { id: 'effets-secondaires', label: 'Effets secondaires' },
+          { id: 'verdict', label: 'Verdict' },
+          { id: 'faq', label: 'FAQ' },
+        ]} />
+
+        <section id="danger-ou-pas" class="article-section rich-text">
+          <h2>Boisson Bonjour danger : faut-il s’inquiéter ?</h2>
+          <p>La recherche “boisson Bonjour danger” mélange souvent deux intentions. Certains veulent savoir si Bonjour Drink est une arnaque ou un produit risqué. D’autres cherchent simplement à vérifier les précautions avant d’acheter. Il faut séparer les deux. À ce stade, le sujet n’est pas de présenter Bonjour comme dangereux, mais de rappeler qu’un produit naturel peut quand même demander des précautions.</p>
+          <p>Bonjour Drink se place dans la catégorie des boissons fonctionnelles et compléments alimentaires. Cette catégorie implique une règle simple : on peut parler de routine, de confort, de ressenti ou d’alternative au café, mais pas de guérison. Le produit ne doit pas être utilisé pour diagnostiquer, traiter ou prévenir une maladie. Si vous avez un problème de santé, une prescription médicale ou un doute sérieux, le bon réflexe est de demander conseil à un professionnel.</p>
+          <p>La prudence est d’autant plus importante que Bonjour ne désigne pas une seule tasse universelle. La marque propose des rituels jour et nuit, avec des objectifs différents : énergie, concentration, digestion, détente ou sommeil selon les références. Une formule pensée pour la journée n’a pas la même logique qu’un rituel du soir. Le danger le plus courant n’est donc pas forcément le produit lui-même, mais un mauvais choix de rituel ou une utilisation trop tardive.</p>
+        </section>
+
+        <ContentImage src="/images/bonjour-drink-editorial-routine.png" alt="Boisson chaude fonctionnelle Bonjour Drink dans une routine quotidienne" caption="Le bon usage compte autant que la composition : moment de prise, dose, tolérance et profil personnel." />
+
+        <section id="composition" class="article-section rich-text">
+          <h2>Composition Bonjour Drink : quels ingrédients surveiller ?</h2>
+          <p>Bonjour communique sur une formule avec extraits biologiques français de plantes et champignons, ainsi qu’un dosage annoncé de 2 700 mg par tasse. Les formules jour peuvent inclure des actifs comme ginseng, Lion’s Mane, cordyceps, mauve ou chaga. Les formules nuit sont plutôt orientées reishi, passiflore, L-théanine, camomille ou anis vert. Cette architecture est cohérente, mais elle impose de lire l’étiquette exacte de la référence choisie.</p>
+          <p>Les plantes et champignons adaptogènes sont souvent perçus comme “naturels”, donc sans risque. C’est une erreur de raisonnement. Naturel ne veut pas dire neutre. Un ingrédient peut être bien toléré par la majorité des utilisateurs et rester inadapté à certains profils : allergies, traitements, antécédents médicaux, hypersensibilité digestive, grossesse ou allaitement.</p>
+          <p>La base cacao et l’expérience de boisson chaude doivent aussi être prises en compte. Pour quelqu’un qui cherche un substitut café, Bonjour peut aider à changer de rituel. Pour quelqu’un qui réagit mal aux poudres, aux arômes, à certains végétaux ou aux boissons riches, la tolérance peut être différente. C’est pourquoi il vaut mieux commencer progressivement plutôt que juger le produit après une grande tasse prise dans de mauvaises conditions.</p>
+        </section>
+
+        <ComparisonTable title="Bonjour Drink : lecture prudente des profils" headers={[{ label: 'Profil' }, { label: 'Recommandation' }]} rows={[
+          { cells: ['Adulte en bonne santé', 'Respecter les doses et observer la tolérance'], highlight: true },
+          { cells: ['Femme enceinte ou allaitante', 'Avis médical avant consommation'] },
+          { cells: ['Traitement médical ou maladie chronique', 'Validation professionnelle recommandée'] },
+          { cells: ['Intestin irritable', 'Test très progressif, arrêt si inconfort'] },
+          { cells: ['Sommeil sensible', 'Éviter les rituels jour tardifs'] },
+        ]} />
+
+        <section id="contre-indications" class="article-section rich-text">
+          <h2>Boisson Bonjour contre-indication : les cas où il faut être prudent</h2>
+          <p>Les contre-indications de Bonjour Drink ne doivent pas être inventées au-delà de ce que la marque indique et de ce que le bon sens impose pour un complément alimentaire. La règle utile est de raisonner par profil. Si vous êtes en bonne santé, sans traitement, sans allergie et que vous testez une dose normale, la question est surtout celle de la tolérance personnelle. Si vous avez une situation médicale particulière, il faut sortir du simple avis consommateur.</p>
+          <p>Les cas les plus évidents sont la grossesse, l’allaitement, les traitements médicamenteux, les maladies chroniques, les troubles digestifs sévères, les antécédents d’allergie à des plantes ou champignons, et les situations où votre médecin vous a déjà conseillé d’éviter certains compléments. Dans ces cas, une recherche Google ne suffit pas. Même une page détaillée ne peut pas remplacer un avis médical individualisé.</p>
+          <p>Il faut aussi éviter l’empilement. Tester Bonjour Drink en même temps qu’un nouveau complément, un changement alimentaire, un nouveau café, un médicament ou une cure bien-être rend l’interprétation impossible. Si un inconfort apparaît, vous ne saurez pas d’où il vient. Le test le plus propre consiste à garder vos habitudes stables et à introduire Bonjour seul, en petite quantité au départ.</p>
+        </section>
+
+        <section id="femme-enceinte" class="article-section rich-text">
+          <h2>Bonjour Drink femme enceinte : prudence obligatoire</h2>
+          <p>Les requêtes “Bonjour femme enceinte”, “café Bonjour femme enceinte” ou “boisson Bonjour femme enceinte” demandent une réponse claire : pendant la grossesse ou l’allaitement, il ne faut pas improviser avec des compléments contenant plantes et champignons. Même si la formule semble douce, même si elle est française, même si elle est sans sucres ajoutés ou sans gluten, le contexte physiologique est spécifique.</p>
+          <p>La bonne recommandation est donc de demander un avis médical avant consommation. Ce n’est pas une position alarmiste ; c’est une règle de prudence. Beaucoup d’ingrédients naturels n’ont pas forcément été évalués dans toutes les situations de grossesse, d’allaitement ou de traitements associés. Dans ce contexte, le bénéfice attendu d’une boisson bien-être ne justifie pas de prendre une décision sans validation.</p>
+          <p>Si l’objectif est simplement de remplacer le café pendant la grossesse, il existe d’autres options alimentaires plus classiques à discuter avec un professionnel de santé. Bonjour Drink peut rester une option à considérer plus tard, mais la priorité reste la sécurité et la simplicité.</p>
+        </section>
+
+        <section id="intestin-irritable" class="article-section rich-text">
+          <h2>Boisson Bonjour intestin irritable : bonne ou mauvaise idée ?</h2>
+          <p>Le mot-clé “boisson Bonjour intestin irritable” est intéressant, parce qu’il montre une inquiétude très concrète. Les personnes avec intestin irritable cherchent souvent des alternatives plus douces au café, car le café peut accentuer l’inconfort chez certains profils. Sur le papier, une boisson chaude sans sucres ajoutés, orientée routine et digestion, peut sembler pertinente. Mais la réalité digestive reste individuelle.</p>
+          <p>Un intestin irritable peut réagir à des ingrédients très différents selon les personnes : poudres, fibres, arômes, plantes, cacao, édulcorants éventuels ou simple changement d’habitude. Il serait donc faux de dire que Bonjour Drink convient à tous les intestins sensibles. Il serait aussi excessif de dire que le produit est forcément mauvais. La seule approche sérieuse est progressive.</p>
+          <p>Commencez par une petite quantité, dans un moment calme, sans autre nouveauté alimentaire. Observez la digestion dans les heures qui suivent et le lendemain. Si tout va bien, augmentez éventuellement. Si vous ressentez ballonnements, douleurs, transit perturbé ou gêne nette, stoppez le test et revenez à une option plus simple. En cas de symptômes importants ou persistants, un avis médical reste nécessaire.</p>
+        </section>
+
+        <section id="soir" class="article-section rich-text">
+          <h2>Peut-on boire Bonjour Drink le soir ?</h2>
+          <p>La question “peut-on boire Bonjour le soir” dépend surtout du rituel choisi. Les formules jour sont conçues pour l’énergie, la concentration ou le confort digestif dans la journée. Même si elles ne se présentent pas comme un café classique agressif, elles peuvent ne pas être idéales tard le soir, surtout chez les personnes sensibles au sommeil, au stress ou aux stimulants.</p>
+          <p>Pour le soir, la logique est plutôt de regarder le rituel nuit. Une formule orientée détente, digestion du soir et sommeil est plus cohérente qu’un rituel énergie pris après le dîner. Là encore, il faut rester pragmatique : si vous avez le sommeil fragile, testez tôt, en petite quantité, et évitez de modifier plusieurs habitudes de sommeil en même temps.</p>
+          <p>Le meilleur repère reste votre réaction. Si Bonjour Drink le soir vous aide à remplacer un café tardif ou un grignotage sucré, cela peut être positif. Si vous sentez agitation, inconfort digestif ou sommeil moins stable, ce n’est pas le bon moment de prise pour vous.</p>
+        </section>
+
+        <section id="effets-secondaires" class="article-section rich-text">
+          <h2>BonjourDrink effets secondaires : que peut-on ressentir ?</h2>
+          <p>Les effets secondaires possibles d’une boisson comme Bonjour Drink sont surtout liés à la tolérance personnelle. Les retours peuvent varier : certains utilisateurs recherchent une énergie plus régulière, une digestion plus confortable ou une baisse de nervosité par rapport au café ; d’autres peuvent ressentir une gêne digestive, ne pas aimer le goût, ou ne pas percevoir de bénéfice net.</p>
+          <p>Les signaux à surveiller sont simples : maux de ventre, ballonnements, transit inhabituel, nausée, inconfort après la prise, nervosité si le rituel jour est mal placé, ou réaction inhabituelle. Dans ce cas, il faut arrêter ou réduire, puis vérifier si le symptôme disparaît. Si vous êtes sous traitement ou si le symptôme est marqué, ne cherchez pas à “forcer l’adaptation”.</p>
+          <p>Il faut aussi distinguer effet secondaire et déception produit. Ne rien ressentir n’est pas forcément un problème médical ; cela peut simplement signifier que Bonjour Drink ne change pas grand-chose pour vous. Le produit doit être jugé sur la régularité, le plaisir, la tolérance, le prix réel avec ou sans code promo, et la cohérence avec votre routine.</p>
+        </section>
+
+        <InnerNote emoji="⚠️" text="Cette page aide à trier les précautions, mais ne remplace pas un avis médical. En cas de grossesse, allaitement, maladie, traitement ou doute sérieux, demandez conseil avant consommation." />
+
+        <section id="verdict" class="article-section rich-text">
+          <h2>Verdict : Bonjour Drink est-il dangereux ?</h2>
+          <p>Notre verdict est équilibré : Bonjour Drink n’est pas un produit à diaboliser, mais ce n’est pas non plus une boisson anodine à recommander indistinctement à tout le monde. C’est un complément alimentaire sous forme de boisson fonctionnelle. Cette catégorie demande de respecter les doses, de choisir le bon rituel, de tenir compte de son profil et de ne pas transformer les avis clients en garantie personnelle.</p>
+          <p>Le produit paraît le plus cohérent pour un adulte qui veut réduire le café, installer une boisson chaude plus douce, tester une routine cacao/plantes/champignons et juger sur quelques jours. Il devient moins évident pour les profils sensibles : femme enceinte, allaitante, intestin irritable marqué, traitement médical, maladie chronique, antécédents d’allergie ou sommeil très fragile.</p>
+          <p>Si vous êtes dans un profil simple, le bon test est progressif : petite quantité, moment adapté, une seule nouveauté à la fois, observation de la digestion et du sommeil. Si vous êtes dans un profil à risque, le bon test commence par une question à votre médecin. C’est cette approche qui permet de répondre proprement aux recherches “boisson Bonjour danger”, “BonjourDrink danger”, “Bonjour contre indication” ou “BonjourDrink avis médical” sans tomber dans l’alarmisme ni dans la promotion aveugle.</p>
+          <p>Enfin, si votre objectif est aussi économique, utilisez le code uniquement si le produit correspond vraiment à votre profil. Un code promo Bonjour Drink comme LMC20 rend l’essai moins cher, mais il ne rend pas le produit automatiquement adapté. Le prix remisé doit venir après la vérification santé, pas avant.</p>
+          <p>Cette organisation répond aussi aux variantes “BonjourDrink danger”, “café Bonjour danger”, “boisson Bonjour avis médical”, “Bonjour contre indication” ou “BonjourDrink effets secondaires” sans répéter artificiellement les mêmes phrases. L’objectif est de donner une réponse utile, lisible et exploitable avant achat.</p>
+        </section>
+
+        <section id="faq" class="faq-section"><FAQSection faq={faq} title="FAQ danger, contre-indications et précautions" /></section>
+      </div>
+
+      <aside class="sidebar-column"><div class="sidebar-sticky"><SidebarCTA logoSrc={product.brandLogo} promoCode={product.promoCode} promoPercent={product.promoPercent} originalPrice={product.originalPrice} discountPrice={product.discountPrice} ctaLink={product.affiliateLink} heroImage={product.image} rating={product.rating} reviewCount={product.reviewCount} /></div></aside>
+    </div></div></div>
+  </main>
+</BaseLayout>
+
+<style>
+  .article-section { margin-top: 2.2rem; }
+  .article-section h2 { margin: 0 0 .85rem; line-height: 1.2; }
+  .article-section p { margin: 0; line-height: 1.72; color: #444; }
+  .article-section p + p { margin-top: 1rem; }
+  .faq-section { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
+</style>
