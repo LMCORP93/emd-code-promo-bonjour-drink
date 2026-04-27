@@ -1,8 +1,32 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import config from '@/data/site.config';
+
+const legalPageTitle = 'Mentions légales';
+const legalPageDescription = 'Informations légales et mentions obligatoires du site.';
+const legalPageUrl = new URL(Astro.url.pathname, config.domain).toString();
 ---
 
 <BaseLayout title="Mentions légales Code Promo Bonjour Drink" description="Mentions légales du site code-promo-bonjour-drink.fr, édité par LMCORP, avec informations sur l'éditeur, l'hébergement et l'affiliation.">
+
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: config.domain },
+      { '@type': 'ListItem', position: 2, name: legalPageTitle, item: legalPageUrl },
+    ],
+  })} />
+
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: legalPageTitle,
+    headline: legalPageTitle,
+    description: legalPageDescription,
+    url: legalPageUrl,
+    isPartOf: { '@type': 'WebSite', name: config.siteName, url: config.domain },
+  })} />
   <main class="padding-section-medium" style="background-color: #ffffff;">
     <div class="container-large" style="max-width: 72rem; margin: 0 auto;">
 

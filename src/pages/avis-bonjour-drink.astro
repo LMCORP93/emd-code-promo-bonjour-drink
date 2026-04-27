@@ -15,6 +15,7 @@ const topProduct = config.products[0];
 const promoProduct = { ...topProduct, productCategory: config.productCategory, shipping: 'France, Colissimo / Mondial Relay' };
 
 const pageTitle = 'Bonjour Drink avis 2026 : test, goût et verdict';
+const pageUrl = `${config.domain}/avis-bonjour-drink/`;
 const pageDescription = 'Avis Bonjour Drink 2026 : test éditorial, goût, composition, Trustpilot, Yuka, rapport qualité-prix, méthode de notation et verdict avant achat.';
 const faq = [
   { question: 'Quel est notre avis sur Bonjour Drink ?', answer: 'Notre avis est positif si vous cherchez une alternative douce au café, plus orientée routine bien-être que stimulation forte. Le produit reste premium et doit être testé progressivement.' },
@@ -27,8 +28,30 @@ const faq = [
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: config.domain },
+      { '@type': 'ListItem', position: 2, name: 'Avis Bonjour Drink', item: pageUrl },
+    ],
+  })} />
   <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) })} />
   <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'Review', itemReviewed: { '@type': 'Product', name: 'Bonjour Drink', brand: { '@type': 'Brand', name: 'Bonjour' } }, author: { '@type': 'Person', name: config.author.name }, reviewRating: { '@type': 'Rating', ratingValue: topProduct.rating, bestRating: 10 }, reviewBody: pageDescription })} />
+
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: pageTitle,
+    description: pageDescription,
+    url: pageUrl,
+    image: 'https://bonjourdrink.co/cdn/shop/files/BonjourDrink-7D-2-5-M_1_1618b982-cd73-4a41-a692-8824ed3e45d4.webp?v=1755870452',
+    author: { '@type': 'Person', name: config.author.name },
+    publisher: { '@type': 'Organization', name: config.siteName, logo: { '@type': 'ImageObject', url: new URL('/logo.svg', config.domain).toString() } },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+    datePublished: '2026-04-27',
+    dateModified: '2026-04-27',
+  })} />
 
   <BlogHero
     title={pageTitle}

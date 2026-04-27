@@ -1,8 +1,32 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import config from '@/data/site.config';
+
+const legalPageTitle = 'Politique de confidentialité';
+const legalPageDescription = 'Informations relatives à la confidentialité et au traitement des données.';
+const legalPageUrl = new URL(Astro.url.pathname, config.domain).toString();
 ---
 
 <BaseLayout title="Politique de confidentialité Bonjour Drink" description="Politique de confidentialité de code-promo-bonjour-drink.fr : données collectées, cookies, affiliation, droits utilisateur et contact.">
+
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: config.domain },
+      { '@type': 'ListItem', position: 2, name: legalPageTitle, item: legalPageUrl },
+    ],
+  })} />
+
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: legalPageTitle,
+    headline: legalPageTitle,
+    description: legalPageDescription,
+    url: legalPageUrl,
+    isPartOf: { '@type': 'WebSite', name: config.siteName, url: config.domain },
+  })} />
   <main class="padding-section-medium" style="background-color: #ffffff;">
     <div class="container-large" style="max-width: 72rem; margin: 0 auto;">
 

@@ -14,6 +14,7 @@ import config from '@/data/site.config';
 const product = config.products[0];
 const promoProduct = { ...product, productCategory: config.productCategory, shipping: 'France, Colissimo / Mondial Relay' };
 const pageTitle = 'Boisson Bonjour danger : contre-indications et avis';
+const pageUrl = `${config.domain}/boisson-bonjour-danger/`;
 const pageDescription = 'Boisson Bonjour danger : précautions, femme enceinte, intestin irritable, effets secondaires possibles, prise le soir et avis médical avant achat.';
 const faq = [
   { question: 'La boisson Bonjour est-elle dangereuse ?', answer: 'Pour un adulte en bonne santé, Bonjour Drink n’est pas présenté comme dangereux aux doses recommandées. La prudence reste nécessaire en cas de grossesse, allaitement, maladie, traitement médical ou sensibilité digestive.' },
@@ -26,6 +27,14 @@ const faq = [
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: config.domain },
+      { '@type': 'ListItem', position: 2, name: 'Boisson Bonjour danger', item: pageUrl },
+    ],
+  })} />
   <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) })} />
   <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
     '@context': 'https://schema.org',
