@@ -13,6 +13,16 @@ interface Props {
 }
 
 const { siteName, logoSrc, navLinks, ctaText, ctaLink } = Astro.props;
+
+const normalizePath = (value: string) => {
+  if (!value || value.startsWith('#') || /^https?:\/\//i.test(value)) return value;
+  const [pathOnly] = value.split('#');
+  const normalized = pathOnly.endsWith('/') && pathOnly !== '/' ? pathOnly.slice(0, -1) : pathOnly;
+  return normalized || '/';
+};
+
+const currentPath = normalizePath(Astro.url.pathname);
+const isNavLinkActive = (href: string) => normalizePath(href) === currentPath;
 ---
 
 <!-- ═══ navbar_component ═══
@@ -45,7 +55,11 @@ const { siteName, logoSrc, navLinks, ctaText, ctaLink } = Astro.props;
           /* ═══ navbar_menu-item ═══ Webflow: gap-12px, flex, justify-start, items-center */
           <a
             href={link.href}
-            class="font-primary text-sm text-[#595b61] no-underline transition-colors duration-200 hover:text-black"
+            aria-current={isNavLinkActive(link.href) ? 'page' : undefined}
+            class:list={[
+              'font-primary text-sm no-underline transition-colors duration-200 hover:text-black',
+              isNavLinkActive(link.href) ? 'font-bold text-orange' : 'text-[#595b61]',
+            ]}
           >
             {link.label}
           </a>
@@ -124,7 +138,11 @@ const { siteName, logoSrc, navLinks, ctaText, ctaLink } = Astro.props;
     {navLinks.map((link) => (
       <a
         href={link.href}
-        class="font-primary text-[28px] font-semibold leading-tight text-black transition-colors duration-200 hover:text-orange"
+        aria-current={isNavLinkActive(link.href) ? 'page' : undefined}
+        class:list={[
+          'font-primary text-[28px] font-semibold leading-tight transition-colors duration-200 hover:text-orange',
+          isNavLinkActive(link.href) ? 'text-orange' : 'text-black',
+        ]}
       >
         {link.label}
       </a>
