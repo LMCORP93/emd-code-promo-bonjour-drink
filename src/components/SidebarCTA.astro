@@ -9,9 +9,11 @@ interface Props {
   heroImage: string;
   rating: number;
   reviewCount: number;
+  productName?: string;
+  brandName?: string;
 }
 
-const { logoSrc, promoCode, promoPercent, originalPrice, discountPrice, ctaLink, heroImage, rating, reviewCount } = Astro.props;
+const { logoSrc, promoCode, promoPercent, originalPrice, discountPrice, ctaLink, heroImage, rating, reviewCount, productName, brandName } = Astro.props;
 ---
 
 <div class="cta_component flex flex-col gap-4 rounded-card text-center bg-white p-4 shadow-cta-card">
@@ -19,7 +21,7 @@ const { logoSrc, promoCode, promoPercent, originalPrice, discountPrice, ctaLink,
   <div class="rounded-xl overflow-hidden bg-grey-bg">
     <img
       src={heroImage}
-      alt="Product"
+      alt={productName ? `${productName} - produit recommandé` : 'Produit recommandé par LMC'}
       loading="lazy"
       class="w-full h-auto object-cover block"
     />
