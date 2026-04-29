@@ -9,6 +9,7 @@ import ComparisonTable from '@/components/ComparisonTable.astro';
 import ContentImage from '@/components/ContentImage.astro';
 import InnerNote from '@/components/InnerNote.astro';
 import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
+import InBriefBlock from '@/components/InBriefBlock.astro';
 import config from '@/data/site.config';
 
 const topProduct = config.products[0];
@@ -25,6 +26,8 @@ const faq = [
   { question: 'Où acheter Bonjour Drink ?', answer: 'Le plus sûr est de passer par le site officiel Bonjour Drink afin de vérifier le prix, l’offre active, le code promo éventuel et les conditions de remboursement.' },
   { question: 'Bonjour Drink présente-t-il des dangers ?', answer: 'Les précautions santé sont traitées sur la page dédiée danger et contre-indications. En résumé : prudence en cas de grossesse, allaitement, traitement médical, maladie ou sensibilité digestive.' },
 ];
+
+const inBrief = { title: 'Avis Bonjour Drink : notre verdict rapide', paragraphs: ['Bonjour Drink est notre recommandation principale si l’objectif est de remplacer le café par une boisson plus douce, plus ritualisée et moins centrée sur la caféine.', 'Le produit n’est pas un espresso bis. Son intérêt vient surtout du positionnement café alternatif, du branding propre et du code LMC20 qui rend le premier test plus intéressant.'], assets: ['Très bon fit avec l’intention café alternatif', 'Code LMC20 clair et visible pour réduire le prix', 'Positionnement premium facile à comprendre', 'Bon produit à tester si le café classique crée nervosité ou crash'], considerations: ['Ne conviendra pas aux amateurs d’espresso très corsé', 'Le goût reste personnel et doit être testé sur plusieurs jours'] };
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -70,6 +73,7 @@ const faq = [
   <main style="background-color:#ffffff;">
     <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
       <div class="content-column">
+        <InBriefBlock title={inBrief.title} paragraphs={inBrief.paragraphs} assets={inBrief.assets} considerations={inBrief.considerations} product={topProduct} />
         <section id="intro">
           <FirstReview
             tag="Avis 2026"
