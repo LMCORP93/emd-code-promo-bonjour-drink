@@ -18,6 +18,45 @@ const promoProduct = {
   shipping: 'France, Colissimo / Mondial Relay',
 };
 const heroImage = '/images/bonjour-drink-hero-preparation.png';
+
+const toAbsoluteUrl = (value: string) => /^https?:\/\//i.test(value) ? value : new URL(value, config.domain).toString();
+const numericPrice = (value: string) => String(value ?? '').replace(',', '.').replace(/[^\d.]/g, '');
+const productSchema = (p: typeof config.products[number]) => ({
+  '@type': 'Product',
+  '@id': new URL(`/#product-${p.slug}`, config.domain).toString(),
+  name: p.name,
+  image: toAbsoluteUrl(p.image),
+  description: p.description,
+  category: (p as any).productType ?? config.productCategory,
+  brand: { '@type': 'Brand', name: p.brand },
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'EUR',
+    price: numericPrice(p.discountPrice),
+    availability: 'https://schema.org/InStock',
+    url: p.affiliateLink || config.domain,
+    itemCondition: 'https://schema.org/NewCondition',
+    shippingDetails: {
+      '@type': 'OfferShippingDetails',
+      shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'FR' },
+      shippingRate: { '@type': 'MonetaryAmount', value: 0, currency: 'EUR' },
+      deliveryTime: {
+        '@type': 'ShippingDeliveryTime',
+        handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 2, unitCode: 'DAY' },
+        transitTime: { '@type': 'QuantitativeValue', minValue: 2, maxValue: 7, unitCode: 'DAY' },
+      },
+    },
+    hasMerchantReturnPolicy: {
+      '@type': 'MerchantReturnPolicy',
+      applicableCountry: 'FR',
+      returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+      merchantReturnDays: 14,
+      returnMethod: 'https://schema.org/ReturnByMail',
+      returnFees: 'https://schema.org/ReturnFeesCustomerResponsibility',
+    },
+  },
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: p.rating, bestRating: 10, worstRating: 1, reviewCount: p.reviewCount },
+});
 ---
 
 <BaseLayout title={config.seo.title} description={config.seo.description}>
@@ -40,13 +79,7 @@ const heroImage = '/images/bonjour-drink-hero-preparation.png';
     mainEntityOfPage: config.domain,
     datePublished: '2026-04-26',
     dateModified: '2026-04-26',
-    about: {
-      '@type': 'Product',
-      name: product.name,
-      brand: { '@type': 'Brand', name: product.brand },
-      aggregateRating: { '@type': 'AggregateRating', ratingValue: product.rating, bestRating: 10, ratingCount: product.reviewCount },
-      offers: { '@type': 'Offer', price: '31.20', priceCurrency: 'EUR', url: product.affiliateLink, availability: 'https://schema.org/InStock' },
-    },
+    about: productSchema(product),
   })} />
   <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
     '@context': 'https://schema.org',
