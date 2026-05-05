@@ -115,7 +115,7 @@ const config: SiteConfig = {
   pros: products[0].pros,
   cons: products[0].cons,
   faq: [
-    { question: 'Quel est le code promo Bonjour Drink ?', answer: 'Le code promo Bonjour Drink à utiliser est LMC20. Il permet d’obtenir -20% sur le site officiel via le lien partenaire LMC.' },
+    { question: 'Quel est le code promo Bonjour Drink ?', answer: 'Le code promo Bonjour Drink à utiliser est LMC20. Il permet d’obtenir -20% sur le site officiel via notre lien de réduction vérifié.' },
     { question: 'Le code LMC20 est-il vérifié ?', answer: 'Oui, le code LMC20 est le code partenaire Bonjour Drink vérifié pour cette page. La remise doit toujours être contrôlée dans le panier avant paiement.' },
     { question: 'Combien coûte Bonjour Drink avec le code promo ?', answer: 'Le prix public indicatif est de 39,00 €. Avec -20%, le prix descend autour de 31,20 €, hors frais de livraison ou offres temporaires.' },
     { question: 'Bonjour Drink remplace-t-il le café ?', answer: 'Bonjour Drink se présente comme une alternative plus douce au café, avec cacao, plantes et champignons adaptogènes. L’objectif est une routine plus stable, pas un effet stimulant brutal.' },
