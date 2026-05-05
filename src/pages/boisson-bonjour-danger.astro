@@ -10,6 +10,7 @@ import InnerNote from '@/components/InnerNote.astro';
 import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
 import SidebarCTA from '@/components/SidebarCTA.astro';
 import config from '@/data/site.config';
+import AuthorBioCard from '@/components/AuthorBioCard.astro';
 
 const product = config.products[0];
 const promoProduct = { ...product, productCategory: config.productCategory, shipping: 'France, Colissimo / Mondial Relay' };
@@ -188,6 +189,8 @@ const faq = [
           alt="Ingrédients adaptogènes à vérifier avant une boisson Bonjour Drink"
           caption="Une image dédiée aux ingrédients rappelle que le vrai sujet est la tolérance, pas seulement le goût."
         />
+
+        <AuthorBioCard />
 
         <section id="faq" class="faq-section"><FAQSection faq={faq} title="FAQ danger, contre-indications et précautions" /></section>
       </div>

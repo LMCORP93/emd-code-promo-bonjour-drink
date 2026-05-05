@@ -11,6 +11,7 @@ import InnerNote from '@/components/InnerNote.astro';
 import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
 import InBriefBlock from '@/components/InBriefBlock.astro';
 import config from '@/data/site.config';
+import AuthorBioCard from '@/components/AuthorBioCard.astro';
 
 const topProduct = config.products[0];
 const promoProduct = { ...topProduct, productCategory: config.productCategory, shipping: 'France, Colissimo / Mondial Relay' };
@@ -203,6 +204,8 @@ const inBrief = { title: 'Avis Bonjour Drink : notre verdict rapide', paragraphs
           alt="Préparation de Bonjour Drink dans une tasse chaude"
           caption="Un bon avis compare aussi la facilité d’usage au café classique."
         />
+
+        <AuthorBioCard />
 
         <section id="faq" class="faq-section"><FAQSection faq={faq} title="FAQ Avis Bonjour Drink" /></section>
       </div>

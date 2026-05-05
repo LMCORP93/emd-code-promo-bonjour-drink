@@ -10,6 +10,7 @@ import ContentImage from '@/components/ContentImage.astro';
 import InnerNote from '@/components/InnerNote.astro';
 import ComparisonTable from '@/components/ComparisonTable.astro';
 import config from '@/data/site.config';
+import AuthorBioCard from '@/components/AuthorBioCard.astro';
 
 const product = config.products[0];
 const promoProduct = {
@@ -231,7 +232,9 @@ const productSchema = (p: typeof config.products[number]) => ({
               <p>Cette approche est volontairement plus utile qu’une page coupon classique. Elle permet de répondre à la recherche “bonjour code promo”, mais aussi aux variantes comme “code reduction Bonjour”, “code promo Bonjourdrink”, “Bonjour promo”, “Bonjour Drink discount” ou “code Bonjourdrink”. L’objectif n’est pas de répéter artificiellement chaque mot-clé, mais de couvrir les intentions réelles avec des réponses propres, vérifiables et orientées conversion. C’est ce qui donne une page durable, utile et monétisable.</p>
             </section>
 
-            <section id="faq" class="faq-section">
+            <AuthorBioCard />
+
+        <section id="faq" class="faq-section">
               <FAQSection faq={config.faq} title="Questions fréquentes sur le code promo Bonjour Drink" />
             </section>
           </div>
