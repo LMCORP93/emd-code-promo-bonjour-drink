@@ -43,15 +43,18 @@ const { items } = Astro.props;
     const links = document.getElementById('toc-links');
     const chevron = trigger.querySelector('.summary_chevron');
     if (!links || !chevron) return;
+    const linksEl = links as HTMLElement;
+    const chevronEl = chevron as HTMLElement;
+    const triggerEl = trigger as HTMLElement;
 
     function toggle() {
-      const isHidden = links.classList.toggle('summary_hidden');
-      chevron.classList.toggle('summary_chevron-up', isHidden);
-      trigger.setAttribute('aria-expanded', isHidden ? 'false' : 'true');
+      const isHidden = linksEl.classList.toggle('summary_hidden');
+      chevronEl.classList.toggle('summary_chevron-up', isHidden);
+      triggerEl.setAttribute('aria-expanded', isHidden ? 'false' : 'true');
     }
 
-    trigger.addEventListener('click', toggle);
-    trigger.addEventListener('keydown', (e) => {
+    triggerEl.addEventListener('click', toggle);
+    triggerEl.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         toggle();
