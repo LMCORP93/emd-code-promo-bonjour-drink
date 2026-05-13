@@ -51,7 +51,7 @@ const faq = [
 
   <BlogHero
     title={pageTitle}
-    description="La réponse courte pour éviter de chercher partout : pas de numéro public fiable à privilégier, mais un email support à utiliser avec les bonnes informations de commande."
+    description={`Bonjour Drink ne met pas en avant de contact téléphone public fiable. Pour joindre la marque, le canal le plus sûr est l’email support ${supportEmail}, notamment pour une commande, une livraison ou un remboursement.`}
     author={config.author.name}
     authorAvatar={config.author.avatar}
     date="13 mai 2026"
@@ -59,8 +59,7 @@ const faq = [
     breadcrumbs={[{ label: 'Téléphone Bonjour Drink', href: '/telephone-bonjour-drink/' }]}
     bannerImage="/images/bonjour-drink-hero-preparation.png"
     product={{ name: product.name, image: product.image, promoCode: product.promoCode, promoPercent: product.promoPercent, originalPrice: product.originalPrice, discountPrice: product.discountPrice, affiliateLink: product.affiliateLink }}
-    heroButton={{ text: 'Voir l’offre officielle', href: product.affiliateLink, external: true }}
-    showOfferBlock={false}
+    showOfferBlock={true}
   />
 
   <main style="background-color:#ffffff;">
