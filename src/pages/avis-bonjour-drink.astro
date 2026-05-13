@@ -29,6 +29,23 @@ const faq = [
 ];
 
 const inBrief = { title: 'Avis Bonjour Drink : notre verdict rapide', paragraphs: ['Bonjour Drink est notre recommandation principale si l’objectif est de remplacer le café par une boisson plus douce, plus ritualisée et moins centrée sur la caféine.', 'Le produit n’est pas un espresso bis. Son intérêt vient surtout du positionnement café alternatif, du branding propre et du code LMC20 qui rend le premier test plus intéressant.'], assets: ['Très bon fit avec l’intention café alternatif', 'Code LMC20 clair et visible pour réduire le prix', 'Positionnement premium facile à comprendre', 'Bon produit à tester si le café classique crée nervosité ou crash'], considerations: ['Ne conviendra pas aux amateurs d’espresso très corsé', 'Le goût reste personnel et doit être testé sur plusieurs jours'] };
+const toAbsoluteUrl = (value: string) => /^https?:\/\//i.test(value) ? value : new URL(value, config.domain).toString();
+const numericPrice = (value: string) => String(value ?? '').replace(',', '.').replace(/[^\d.]/g, '');
+const productSchema = (p: typeof config.products[number]) => ({
+  '@type': 'Product',
+  '@id': new URL(`/#product-${p.slug}`, config.domain).toString(),
+  name: p.name,
+  image: toAbsoluteUrl(p.image),
+  description: p.description,
+  category: (p as any).productType ?? config.productCategory,
+  brand: { '@type': 'Brand', name: p.brand },
+  offers: {
+    '@type': 'Offer', priceCurrency: 'EUR', price: numericPrice(p.discountPrice), availability: 'https://schema.org/InStock', url: p.affiliateLink || config.domain, itemCondition: 'https://schema.org/NewCondition',
+    shippingDetails: { '@type': 'OfferShippingDetails', shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'FR' }, shippingRate: { '@type': 'MonetaryAmount', value: 0, currency: 'EUR' }, deliveryTime: { '@type': 'ShippingDeliveryTime', handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 2, unitCode: 'DAY' }, transitTime: { '@type': 'QuantitativeValue', minValue: 2, maxValue: 7, unitCode: 'DAY' } } },
+    hasMerchantReturnPolicy: { '@type': 'MerchantReturnPolicy', applicableCountry: 'FR', returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow', merchantReturnDays: 14, returnMethod: 'https://schema.org/ReturnByMail', returnFees: 'https://schema.org/ReturnFeesCustomerResponsibility' }
+  },
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: p.rating, bestRating: 10, worstRating: 1, reviewCount: p.reviewCount },
+});
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -41,7 +58,7 @@ const inBrief = { title: 'Avis Bonjour Drink : notre verdict rapide', paragraphs
     ],
   })} />
   <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) })} />
-  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'Review', itemReviewed: { '@type': 'Product', name: 'Bonjour Drink', brand: { '@type': 'Brand', name: 'Bonjour' } }, author: { '@type': 'Person', name: config.author.name }, reviewRating: { '@type': 'Rating', ratingValue: topProduct.rating, bestRating: 10 }, reviewBody: pageDescription })} />
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'Review', itemReviewed: productSchema(topProduct), author: { '@type': 'Person', name: config.author.name }, reviewRating: { '@type': 'Rating', ratingValue: topProduct.rating, bestRating: 10 }, reviewBody: pageDescription })} />
 
   <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
     '@context': 'https://schema.org',
