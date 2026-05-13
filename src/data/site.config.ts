@@ -139,6 +139,7 @@ const config: SiteConfig = {
     { type: 'blog', label: 'Code promo', slug: '/' },
     { type: 'blog', label: 'Avis Bonjour', slug: '/avis-bonjour-drink/' },
     { type: 'blog', label: 'Danger', slug: '/boisson-bonjour-danger/' },
+    { type: 'blog', label: 'Contact', slug: '/telephone-bonjour-drink/' },
   ],
 };
 

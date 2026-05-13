@@ -11,6 +11,7 @@ Ce fichier aide les assistants IA à comprendre le périmètre du site, les URLs
 ## Pages importantes
 - [Bonjour Drink avis 2026 : test, goût et verdict](https://code-promo-bonjour-drink.fr/avis-bonjour-drink/): Page avis, guide ou intention secondaire.
 - [Boisson Bonjour danger : contre-indications et avis](https://code-promo-bonjour-drink.fr/boisson-bonjour-danger/): Page avis, guide ou intention secondaire.
+- [Téléphone Bonjour Drink : contact et email](https://code-promo-bonjour-drink.fr/telephone-bonjour-drink/): Page contact, email support et informations SAV.
 - [Accueil / comparatif principal](https://code-promo-bonjour-drink.fr/): Page principale pour le comparatif et l’intention d’achat.
 
 ## Offres partenaires et codes promo connus
