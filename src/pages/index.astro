@@ -11,6 +11,7 @@ import InnerNote from '@/components/InnerNote.astro';
 import ComparisonTable from '@/components/ComparisonTable.astro';
 import config from '@/data/site.config';
 import AuthorBioCard from '@/components/AuthorBioCard.astro';
+import ArticleGrid from '@/components/ArticleGrid.astro';
 
 const product = config.products[0];
 const promoProduct = {
@@ -256,6 +257,7 @@ const productSchema = (p: typeof config.products[number]) => ({
       </div>
     </div>
   </main>
+  <ArticleGrid />
 </BaseLayout>
 
 <style>

@@ -7,6 +7,7 @@ import InnerNote from '@/components/InnerNote.astro';
 import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
 import SidebarCTA from '@/components/SidebarCTA.astro';
 import config from '@/data/site.config';
+import ArticleGrid from '@/components/ArticleGrid.astro';
 
 const product = config.products[0];
 const promoProduct = { ...product, productCategory: config.productCategory, shipping: 'France, Colissimo / Mondial Relay' };
@@ -119,6 +120,7 @@ const faq = [
       <aside class="sidebar-column"><div class="sidebar-sticky"><SidebarCTA logoSrc={product.brandLogo} promoCode={product.promoCode} promoPercent={product.promoPercent} originalPrice={product.originalPrice} discountPrice={product.discountPrice} ctaLink={product.affiliateLink} heroImage={product.image} rating={product.rating} reviewCount={product.reviewCount} /></div></aside>
     </div></div></div>
   </main>
+  <ArticleGrid />
 </BaseLayout>
 
 <style>
