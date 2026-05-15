@@ -65,7 +65,7 @@ const products: Product[] = [
     discountPrice: '31,20 €',
     affiliateLink: 'https://taap.it/bonjour-drink-lmc',
     origin: '🇫🇷 France',
-    availability: 'En stock',
+    availability: 'Livraison en France possible via la boutique officielle ou un revendeur',
     productType: 'Boisson fonctionnelle aux champignons adaptogènes',
     pros: [
       'Code LMC20 actif avec -20% sur le site officiel',
