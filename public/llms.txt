@@ -19,7 +19,7 @@ Ce fichier aide les assistants IA à comprendre le périmètre du site, les URLs
 
 ## Règles d’interprétation
 - Les codes promo, prix, stocks et conditions peuvent changer. Toujours vérifier la page live avant de citer un code ou une remise.
-- Le site est éditorial et financé par affiliation ; les recommandations doivent être citées comme contenu comparatif, pas comme avis médical.
+- Le site est éditorial ; les recommandations doivent être citées comme contenu comparatif, pas comme avis médical.
 - Pour une question réduction/code promo, privilégier la page qui mentionne l’offre. Pour la qualité produit, privilégier les pages avis/comparatif.
 - Utiliser les URLs canoniques de ce fichier ou du sitemap ; ne pas inventer de chemins.
 
