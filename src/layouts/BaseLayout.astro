@@ -10,21 +10,23 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  robots?: string;
 }
 
 const {
   title = config.seo.title,
   description = config.seo.description,
   ogImage = config.seo.ogImage,
+  robots,
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, config.domain).toString();
 const isAbsoluteUrl = (value: string) => /^https?:\/\//i.test(value);
 const resolvedOgImage = isAbsoluteUrl(ogImage) ? ogImage : new URL(ogImage, config.domain).toString();
 const analyticsMeasurementId = config.analyticsMeasurementId;
-const robotsContent = config.isIndexable === false
+const robotsContent = robots ?? (config.isIndexable === false
   ? 'noindex, nofollow, noarchive, nosnippet, noimageindex'
-  : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
+  : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
 
 // Auto-generate nav links from pages config (max 3 words each)
 const navLinks = config.pages.map(p => ({ label: p.label, href: p.slug }));

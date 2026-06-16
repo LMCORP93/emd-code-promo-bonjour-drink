@@ -7,7 +7,7 @@ const legalPageDescription = 'Informations légales et mentions obligatoires du 
 const legalPageUrl = new URL(Astro.url.pathname, config.domain).toString();
 ---
 
-<BaseLayout title="Mentions légales Code Promo Bonjour Drink" description="Mentions légales du site code-promo-bonjour-drink.fr, avec informations sur l’éditeur, l’hébergement et les liens externes.">
+<BaseLayout title="Mentions légales Code Promo Bonjour Drink" description="Mentions légales du site code-promo-bonjour-drink.fr, avec informations sur l’éditeur, l’hébergement et les liens externes." robots="noindex, nofollow">
 
   <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
     '@context': 'https://schema.org',
