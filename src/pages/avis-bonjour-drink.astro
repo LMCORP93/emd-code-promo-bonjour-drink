@@ -137,7 +137,9 @@ const productSchema = (p: typeof config.products[number]) => ({
           <p>La limite, c’est que Bonjour Drink reste une boisson fonctionnelle premium. Le prix est supérieur à un café classique et les effets restent subjectifs. Si vous aimez tester des routines bien-être, le produit est intéressant. Si vous cherchez uniquement le stimulant le moins cher possible, ce n’est pas le bon achat.</p>
         </section>
 
-        <section id="methode" class="article-section rich-text method-box">
+        
+            <div class="promo-wrap mid"><ReviewPromoCard product={promoProduct} /></div>
+            <section id="methode" class="article-section rich-text method-box">
           <h2>Notre méthode de notation : pourquoi 9,7/10 ?</h2>
           <p>La note <strong>9,7/10</strong> est une note éditoriale LMC. Elle ne signifie pas que Bonjour Drink aura 9,7/10 d’efficacité chez tout le monde. Elle ne remplace pas une note médicale, un essai clinique ou une garantie de résultat. Elle sert à évaluer la qualité globale de l’offre avant achat.</p>
           <p>Nous croisons six critères : cohérence de la formule, clarté du positionnement, transparence des informations disponibles, qualité perçue de la marque, signaux clients annoncés, conditions d’achat et limites du produit. Bonjour marque des points sur la logique jour/nuit, la fabrication française mise en avant, le dosage annoncé, l’univers de marque, la garantie et la preuve sociale. Il perd des points sur le prix premium, la variabilité des ressentis et les précautions nécessaires pour certains profils.</p>
@@ -168,14 +170,24 @@ const productSchema = (p: typeof config.products[number]) => ({
           { cells: ['Précautions', 'À lire séparément pour les profils sensibles'] },
         ]} />
 
-        <section id="experience" class="article-section rich-text">
+        <ContentImage
+          src="/images/bonjour-drink-editorial-routine.png"
+          alt="Routine matinale avec Bonjour Drink préparé comme alternative au café"
+          caption="Le test terrain doit regarder le rituel complet : préparation, goût, énergie et régularité."
+        />
+            <section id="experience" class="article-section rich-text">
           <h2>Expérience produit : goût, préparation et usage quotidien</h2>
           <p>Bonjour Drink doit être jugé comme une boisson de routine. Cela veut dire que le goût pèse autant que la promesse. Si vous aimez les boissons cacao, les notes végétales et les alternatives au café, l’expérience peut être agréable. Si vous attendez exactement le goût d’un expresso ou d’un chocolat chaud très sucré, vous risquez d’être déçu.</p>
           <p>La préparation est un autre critère. Une poudre à mélanger doit se dissoudre correctement, se préparer vite et s’intégrer sans friction au matin ou au soir. Plus l’usage est simple, plus le produit a de chances de devenir une habitude. C’est souvent là que se joue la différence entre un complément qu’on abandonne et un rituel qu’on garde.</p>
           <p>Les bénéfices ressentis doivent être observés sobrement. Énergie plus stable, digestion plus confortable, moins de fringales ou sommeil plus apaisé peuvent être rapportés par certains clients. Mais votre résultat dépendra de votre café actuel, de votre alimentation, de votre sommeil, de votre sensibilité et de la formule choisie.</p>
         </section>
 
-        <section id="trustpilot-yuka" class="article-section rich-text">
+        <ContentImage
+          src="/images/bonjour-drink-hero-preparation.png"
+          alt="Préparation de Bonjour Drink dans une tasse chaude"
+          caption="Un bon avis compare aussi la facilité d’usage au café classique."
+        />
+            <section id="trustpilot-yuka" class="article-section rich-text">
           <h2>Bonjour Drink Trustpilot, Yuka et avis clients</h2>
           <p>Trustpilot est un signal de réassurance utile pour Bonjour Drink, surtout si le volume d’avis et la note sont visibles publiquement au moment de l’achat. Mais il faut éviter l’erreur classique : une moyenne élevée ne dit pas tout. Les avis les plus utiles sont ceux qui parlent du goût, de la livraison, du service client, du remboursement, de la tolérance digestive et de l’effet ressenti après plusieurs jours.</p>
           <p>Yuka répond à une autre intention. Les recherches “café Bonjour avis Yuka” ou “BonjourDrink Yuka” montrent que les utilisateurs veulent un raccourci objectif. C’est compréhensible, mais un score applicatif ne remplace pas l’analyse complète. Il ne juge pas toujours la pertinence d’un rituel, la qualité d’extraction, l’usage réel ou les précautions personnelles.</p>
@@ -211,19 +223,9 @@ const productSchema = (p: typeof config.products[number]) => ({
           caption="La composition doit rester lisible : cacao, champignons fonctionnels et tolérance individuelle comptent autant que la remise."
         />
 
-        <ContentImage
-          src="/images/bonjour-drink-editorial-routine.png"
-          alt="Routine matinale avec Bonjour Drink préparé comme alternative au café"
-          caption="Le test terrain doit regarder le rituel complet : préparation, goût, énergie et régularité."
-        />
-
-        <ContentImage
-          src="/images/bonjour-drink-hero-preparation.png"
-          alt="Préparation de Bonjour Drink dans une tasse chaude"
-          caption="Un bon avis compare aussi la facilité d’usage au café classique."
-        />
-
-        <AuthorBioCard />
+        
+            
+            <AuthorBioCard />
 
         <section id="faq" class="faq-section"><FAQSection faq={faq} title="FAQ Avis Bonjour Drink" /></section>
       </div>

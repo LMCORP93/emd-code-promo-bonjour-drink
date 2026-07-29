@@ -21,6 +21,7 @@ const faq = [
   { question: 'Comment contacter Bonjour Drink pour une commande ?', answer: 'Envoyez un message clair au support avec votre numéro de commande, le produit concerné, la date d’achat et, si nécessaire, une photo ou capture du problème.' },
   { question: 'Le site code-promo-bonjour-drink.fr est-il le support officiel ?', answer: 'Non. Ce site est un guide indépendantrial indépendant financé par affiliation. Pour une demande SAV, livraison ou remboursement, il faut contacter directement Bonjour Drink.' },
 ];
+import ContentImage from '@/components/ContentImage.astro';
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -87,7 +88,12 @@ const faq = [
           <p>Le bon réflexe est donc simple : pour une question de commande, livraison, remboursement ou compte client, utilisez l’email support. S’il existe un canal téléphonique privé ou temporaire, la marque pourra vous le communiquer directement après votre demande.</p>
         </section>
 
-        <section id="email" class="article-section rich-text">
+        
+            <ContentImage
+              src="/images/content/telephone-bonjour-drink-ill1.webp"
+              alt="Ordinateur portable affichant un panier d'achat en ligne"
+            />
+            <section id="email" class="article-section rich-text">
           <h2>Email Bonjour Drink : l’adresse à utiliser</h2>
           <p>L’email à utiliser pour contacter Bonjour Drink est <strong>{supportEmail}</strong>. C’est le canal à privilégier pour laisser une trace écrite, joindre des captures et éviter les incompréhensions.</p>
           <p>Objet conseillé : <strong>“Demande support commande Bonjour Drink - [numéro de commande]”</strong>. Dans le message, ajoutez votre nom, l’email de commande, la date d’achat, le produit concerné et la demande exacte : suivi colis, modification, remboursement, produit manquant ou question sur l’offre.</p>
@@ -95,7 +101,12 @@ const faq = [
 
         <InnerNote emoji="📌" text="Ce site n’est pas le SAV officiel Bonjour Drink. Nous aidons à trouver le bon contact et à comprendre l’offre, mais seul le support de la marque peut traiter une commande." />
 
-        <section id="sav" class="article-section rich-text">
+        
+            <ContentImage
+              src="/images/content/telephone-bonjour-drink-ill2.webp"
+              alt="Gros plan sur une main saisissant un code de réduction"
+            />
+            <section id="sav" class="article-section rich-text">
           <h2>SAV Bonjour Drink : quoi mettre dans votre message ?</h2>
           <p>Un bon message support doit être court et complet. Évitez les longs paragraphes : le support doit comprendre en quelques secondes ce qui s’est passé et ce que vous attendez.</p>
           <ul>
@@ -108,7 +119,12 @@ const faq = [
 
         <div class="mid-card-wrap"><ReviewPromoCard product={promoProduct} /></div>
 
-        <section id="avant-achat" class="article-section rich-text">
+        
+            <ContentImage
+              src="/images/content/telephone-bonjour-drink-ill3.webp"
+              alt="Vue de dessus d'un bureau avec ordinateur et tasse de café"
+            />
+            <section id="avant-achat" class="article-section rich-text">
           <h2>Avant achat : vérifier le code promo et les conditions</h2>
           <p>Si votre question concerne surtout le prix, vérifiez le code promo avant de finaliser la commande. Le code <strong>{config.promoCode}</strong> est présenté sur ce site comme une réduction partenaire, mais les conditions peuvent évoluer côté marque.</p>
           <p>Le plus prudent est de passer par le lien officiel, d’entrer le code dans le panier, puis de contrôler le prix final avant paiement. Pour une question médicale ou une situation particulière, l’email support ne remplace pas un avis professionnel de santé.</p>
