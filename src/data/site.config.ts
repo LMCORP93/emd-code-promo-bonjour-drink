@@ -137,10 +137,10 @@ const config: SiteConfig = {
     { id: 'faq', label: 'FAQ' },
   ],
   pages: [
-    { type: 'blog', label: 'Code promo', slug: '/', image: '/images/bonjour-drink-hero-preparation.png' },
+    { type: 'blog', label: 'Code promo Bonjour Drink', slug: '/', image: '/images/bonjour-drink-hero-preparation.png' },
     { type: 'blog', label: 'Avis Bonjour', slug: '/avis-bonjour-drink/', image: 'https://bonjourdrink.co/cdn/shop/files/BonjourDrink-7D-2-5-M_1_1618b982-cd73-4a41-a692-8824ed3e45d4.webp?v=1755870452' },
-    { type: 'blog', label: 'Danger', slug: '/boisson-bonjour-danger/', image: '/images/bonjour-drink-editorial-ingredients.png' },
-    { type: 'blog', label: 'Contact', slug: '/telephone-bonjour-drink/', image: '/images/bonjour-drink-hero-preparation.png' },
+    { type: 'blog', label: 'Bonjour Drink : danger ?', slug: '/boisson-bonjour-danger/', image: '/images/bonjour-drink-editorial-ingredients.png' },
+    { type: 'blog', label: 'Téléphone Bonjour Drink', slug: '/telephone-bonjour-drink/', image: '/images/bonjour-drink-hero-preparation.png' },
   ],
 };
 
