@@ -141,7 +141,9 @@ const triggerLabel = hasCode ? `🎁 Code promo ${promoCode}` : '🎁 Voir l’o
 <style>
   /* ── Popup ── */
   .bp {
-    position: fixed; inset: 0; z-index: 100;
+    position: fixed;
+    right: max(1rem, env(safe-area-inset-right));
+    left: auto; inset: 0; z-index: 100;
     display: flex; align-items: center; justify-content: center;
     padding: 1rem;
     opacity: 0; visibility: hidden;
@@ -229,7 +231,7 @@ const triggerLabel = hasCode ? `🎁 Code promo ${promoCode}` : '🎁 Voir l’o
     white-space: nowrap;
   }
   .bp-trigger:hover {
-    background: #d66a12;
+    background: #ef7a1a;
     transform: translateY(-2px);
   }
   .bp-trigger svg { flex-shrink: 0; }

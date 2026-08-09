@@ -67,7 +67,7 @@ const productSchema = (p: typeof config.products[number]) => ({
     headline: pageTitle,
     description: pageDescription,
     url: pageUrl,
-    image: 'https://bonjourdrink.co/cdn/shop/files/BonjourDrink-7D-2-5-M_1_1618b982-cd73-4a41-a692-8824ed3e45d4.webp?v=1755870452',
+    image: '/images/bonjour-drink-avis-produit.webp',
     author: { '@type': 'Person', name: config.author.name },
     publisher: { '@type': 'Organization', name: config.siteName, logo: { '@type': 'ImageObject', url: new URL('/logo.svg', config.domain).toString() } },
     mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
@@ -77,15 +77,15 @@ const productSchema = (p: typeof config.products[number]) => ({
 
   <BlogHero
     title={pageTitle}
-    description="Un avis centré sur l’expérience produit : goût, routine, formule, preuve sociale, prix réel et méthode de notation — sans mélanger avec la page code promo ni la page santé."
+    description="Un avis centré sur l’expérience produit : goût, routine, formule, preuve sociale, prix réel et méthode de notation, sans mélanger avec la page code promo ni la page santé."
     author={config.author.name}
     authorAvatar={config.author.avatar}
     date="27 avril 2026"
     readingTime="12 min de lecture"
     breadcrumbs={[{ label: 'Avis Bonjour Drink', href: '/avis-bonjour-drink/' }]}
-    bannerImage="https://bonjourdrink.co/cdn/shop/files/BonjourDrink-7D-2-5-M_1_1618b982-cd73-4a41-a692-8824ed3e45d4.webp?v=1755870452"
+    bannerImage="/images/bonjour-drink-avis-produit.webp"
     product={{ name: topProduct.name, image: topProduct.image, promoCode: topProduct.promoCode, promoPercent: topProduct.promoPercent, originalPrice: topProduct.originalPrice, discountPrice: topProduct.discountPrice, affiliateLink: topProduct.affiliateLink }}
-    heroButton={{ text: 'Voir Bonjour Drink', href: topProduct.affiliateLink, external: true }}
+    heroButton={{ text: "Lire la suite", href: "#intro" }}
     showOfferBlock={false}
   />
 
@@ -153,7 +153,7 @@ const productSchema = (p: typeof config.products[number]) => ({
           <p>Le discours global évite plutôt l’énergie agressive. Bonjour vise les personnes qui veulent moins de nervosité, une énergie plus régulière, un rituel plus doux ou une boisson du soir plus cohérente. C’est une proposition différente du café fort, du pré-workout ou de la boisson énergisante.</p>
         </section>
 
-        <ContentImage src="https://bonjourdrink.co/cdn/shop/files/BonjourDrink-7D-1-3-S__2.webp?v=1766774986" alt="Bonjour Drink produit et rituel" caption="Notre avis se concentre sur la cohérence du rituel, pas seulement sur le code promo." />
+        <ContentImage src="/images/bonjour-drink-avis-rituel.webp" alt="Bonjour Drink produit et rituel" caption="Notre avis se concentre sur la cohérence du rituel, pas seulement sur le code promo." />
 
         <section id="composition" class="article-section rich-text">
           <h2>Composition Bonjour Drink : ce qui compte vraiment</h2>
@@ -171,7 +171,7 @@ const productSchema = (p: typeof config.products[number]) => ({
         ]} />
 
         <ContentImage
-          src="/images/bonjour-drink-editorial-routine.png"
+          src="/images/bonjour-drink-editorial-routine.webp"
           alt="Routine matinale avec Bonjour Drink préparé comme alternative au café"
           caption="Le test terrain doit regarder le rituel complet : préparation, goût, énergie et régularité."
         />
@@ -183,7 +183,7 @@ const productSchema = (p: typeof config.products[number]) => ({
         </section>
 
         <ContentImage
-          src="/images/bonjour-drink-hero-preparation.png"
+          src="/images/bonjour-drink-hero-preparation.webp"
           alt="Préparation de Bonjour Drink dans une tasse chaude"
           caption="Un bon avis compare aussi la facilité d’usage au café classique."
         />
@@ -218,7 +218,7 @@ const productSchema = (p: typeof config.products[number]) => ({
         </section>
 
                 <ContentImage
-          src="/images/bonjour-drink-editorial-ingredients.png"
+          src="/images/bonjour-drink-editorial-ingredients.webp"
           alt="Ingrédients cacao et adaptogènes autour de Bonjour Drink"
           caption="La composition doit rester lisible : cacao, champignons fonctionnels et tolérance individuelle comptent autant que la remise."
         />
@@ -244,5 +244,5 @@ const productSchema = (p: typeof config.products[number]) => ({
   .article-section p + p { margin-top: 1rem; }
   .method-box { background:#f8f4ec; border:1px solid #eadfce; border-radius:12px; padding:1.4rem; }
   .mid-card-wrap { margin: 2rem 0 2.1rem; }
-  .faq-section { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
+  .faq-section { margin-top: 3rem; }
 </style>

@@ -58,16 +58,16 @@ const faq = [
     date="27 avril 2026"
     readingTime="13 min de lecture"
     breadcrumbs={[{ label: 'Boisson Bonjour danger', href: '/boisson-bonjour-danger/' }]}
-    bannerImage="/images/bonjour-drink-editorial-ingredients.png"
+    bannerImage="/images/bonjour-drink-editorial-ingredients.webp"
     product={{ name: product.name, image: product.image, promoCode: product.promoCode, promoPercent: product.promoPercent, originalPrice: product.originalPrice, discountPrice: product.discountPrice, affiliateLink: product.affiliateLink }}
-    heroButton={{ text: 'Voir l’offre officielle', href: product.affiliateLink, external: true }}
+    heroButton={{ text: "Lire la suite", href: "#intro" }}
     showOfferBlock={false}
   />
 
   <main style="background-color:#ffffff;">
     <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
       <div class="content-column">
-        <section id="en-bref">
+        <section id="intro">
           <FirstReview
             tag="Santé & précautions"
             heading="Boisson Bonjour danger : réponse courte"
@@ -112,7 +112,7 @@ const faq = [
 
         <div class="mid-card-wrap"><ReviewPromoCard product={promoProduct} /></div>
 
-        <ContentImage src="/images/bonjour-drink-editorial-routine.png" alt="Boisson chaude fonctionnelle Bonjour Drink dans une routine quotidienne" caption="Le bon usage compte autant que la composition : moment de prise, dose, tolérance et profil personnel." />
+        <ContentImage src="/images/bonjour-drink-editorial-routine.webp" alt="Boisson chaude fonctionnelle Bonjour Drink dans une routine quotidienne" caption="Le bon usage compte autant que la composition : moment de prise, dose, tolérance et profil personnel." />
 
         <section id="composition" class="article-section rich-text">
           <h2>Composition Bonjour Drink : quels ingrédients surveiller ?</h2>
@@ -146,7 +146,7 @@ const faq = [
         </section>
 
         <ContentImage
-          src="/images/bonjour-drink-editorial-precautions.png"
+          src="/images/bonjour-drink-editorial-precautions.webp"
           alt="Ingrédients adaptogènes à vérifier avant une boisson Bonjour Drink"
           caption="Une image dédiée aux ingrédients rappelle que le vrai sujet est la tolérance, pas seulement le goût."
         />
@@ -185,7 +185,7 @@ const faq = [
         </section>
 
                 <ContentImage
-          src="/images/bonjour-drink-hero-preparation.png"
+          src="/images/bonjour-drink-hero-preparation.webp"
           alt="Préparation d’une boisson chaude Bonjour Drink dans une cuisine claire"
           caption="La tolérance se juge aussi dans le contexte réel : dose, moment de prise et routine quotidienne."
         />
@@ -208,5 +208,5 @@ const faq = [
   .article-section p { margin: 0; line-height: 1.72; color: #444; }
   .article-section p + p { margin-top: 1rem; }
   .mid-card-wrap { margin: 2rem 0 2.1rem; }
-  .faq-section { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
+  .faq-section { margin-top: 3rem; }
 </style>

@@ -143,8 +143,8 @@ const footerLinks = [
       siteName={config.siteName}
       logoSrc="/logo.svg"
       navLinks={navLinks}
-      ctaText="Acheter"
-      ctaLink={headerCtaLink}
+      ctaText="Comparer"
+      ctaLink="/"
     />
 
     <slot />
@@ -169,6 +169,7 @@ const footerLinks = [
       siteName={config.siteName}
       logoSrc="/logo.svg"
       navLinks={footerLinks}
+      tagline={config.tagline}
       copyright="Tout droits réservés - Les avis de Tim"
     />
   </body>

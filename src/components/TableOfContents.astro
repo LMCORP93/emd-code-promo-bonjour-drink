@@ -24,13 +24,13 @@ const { items } = Astro.props;
 
   <!-- Links list (closed by default) -->
   <div class="summary_wrapper-title-links summary_hidden" id="toc-links">
-    {items.map((item) => (
+    {items.map((item, i) => (
       <a
         href={`#${item.id}`}
         class="summary_text-link"
         onclick={`event.preventDefault(); document.querySelector('#${item.id}')?.scrollIntoView({behavior:'smooth'});`}
       >
-        {item.label}
+        {i + 1} - {item.label}
       </a>
     ))}
   </div>
@@ -70,6 +70,7 @@ const { items } = Astro.props;
     border: none;
     border-radius: 8px;
     padding: 0.75rem 0.875rem;
+    background: #f4f2ec;
   }
 
   /* Header / toggle */

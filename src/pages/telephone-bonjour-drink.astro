@@ -59,15 +59,14 @@ import ContentImage from '@/components/ContentImage.astro';
     date="13 mai 2026"
     readingTime="4 min de lecture"
     breadcrumbs={[{ label: 'Téléphone Bonjour Drink', href: '/telephone-bonjour-drink/' }]}
-    bannerImage="/images/bonjour-drink-hero-preparation.png"
+    bannerImage="/images/bonjour-drink-editorial-precautions.webp"
     product={{ name: product.name, image: product.image, promoCode: product.promoCode, promoPercent: product.promoPercent, originalPrice: product.originalPrice, discountPrice: product.discountPrice, affiliateLink: product.affiliateLink }}
-    showOfferBlock={true}
-  />
+    showOfferBlock={false} heroButton={{ text: "Lire la suite", href: "#intro" }} />
 
   <main style="background-color:#ffffff;">
     <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
       <div class="content-column">
-        <section id="reponse-courte" class="contact-card">
+        <section id="intro" class="contact-card">
           <p class="eyebrow">Réponse rapide</p>
           <h2>Comment contacter Bonjour Drink ?</h2>
           <p>À ce stade, nous ne recommandons pas de chercher un téléphone Bonjour Drink au hasard sur des annuaires ou des pages non officielles. Le canal le plus propre est l’email support communiqué : <a href={`mailto:${supportEmail}`}>{supportEmail}</a>.</p>
@@ -152,5 +151,5 @@ import ContentImage from '@/components/ContentImage.astro';
   .article-section p + p { margin-top:1rem; }
   .article-section ul { margin:1rem 0 0; padding-left:1.25rem; color:#444; line-height:1.7; }
   .mid-card-wrap { margin:2rem 0 2.1rem; }
-  .faq-section { margin-top:3rem; padding-top:2rem; border-top:2px solid #f0ebe3; }
+  .faq-section { margin-top:3rem; }
 </style>

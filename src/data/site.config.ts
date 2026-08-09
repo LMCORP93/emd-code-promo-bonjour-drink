@@ -23,6 +23,7 @@ export interface Product {
 }
 
 export interface SiteConfig {
+  language?: string;
   domain: string;
   isIndexable?: boolean;
   siteName: string;
@@ -55,10 +56,10 @@ const products: Product[] = [
     name: 'Rituel Bonjour Drink',
     brand: 'Bonjour Drink',
     slug: 'bonjour-drink',
-    image: 'https://cdn.prod.website-files.com/68c02c2c477fdd467e6e08a1/68d7c7d22051cb9faf0ade48_bonjour%20drink%202e%CC%80me%20image.avif',
+    image: 'https://cdn.prod.website-files.com/68c02c2c477fdd467e6e08a1/69fbbac94632e591e67920f1_69fbbac366f2e4ef2fa12228_lmc-bonjour-drink-photo-produit-phare-20260506.webp',
     brandLogo: 'https://cdn.prod.website-files.com/68c02c2c477fdd467e6e08a1/68d666ee3daf1b2e78ab7a9a_logo%20Bonjour%20Drink.svg',
     rating: 9.7,
-    reviewCount: 10000,
+    reviewCount: 20000,
     promoCode: 'LMC20',
     promoPercent: 20,
     originalPrice: '39,00 €',
@@ -84,13 +85,14 @@ const products: Product[] = [
 
 const config: SiteConfig = {
   domain: 'https://code-promo-bonjour-drink.fr',
+  language: 'fr',
   isIndexable: true,
   siteName: 'Code Promo Bonjour Drink',
   brand: products[0].brand,
   product: products[0].name,
   productCategory: 'Café adaptogène et boisson fonctionnelle',
   productFormat: 'Poudre à mélanger',
-  tagline: 'Code promo Bonjour Drink LMC20 vérifié en 2026 — -20% sur la boisson adaptogène française.',
+  tagline: 'Code promo Bonjour Drink LMC20 vérifié en 2026 : -20% sur la boisson adaptogène française.',
   affiliateLink: products[0].affiliateLink,
   promoCode: products[0].promoCode,
   originalPrice: products[0].originalPrice,
@@ -121,7 +123,7 @@ const config: SiteConfig = {
     { question: 'Bonjour Drink remplace-t-il le café ?', answer: 'Bonjour Drink se présente comme une alternative plus douce au café, avec cacao, plantes et champignons adaptogènes. L’objectif est une routine plus stable, pas un effet stimulant brutal.' },
     { question: 'Pourquoi le code promo ne fonctionne pas ?', answer: 'Le code peut ne pas fonctionner si vous n’êtes pas passé par le lien partenaire, si une autre offre est déjà active ou si le panier contient un produit non éligible. Le bon réflexe est de repartir du lien officiel puis de retester LMC20.' },
     { question: 'Bonjour Drink est-il adapté à tout le monde ?', answer: 'Comme pour tout complément ou boisson fonctionnelle, il faut rester prudent en cas de grossesse, allaitement, traitement médical, intestin irritable ou sensibilité particulière. La page danger détaille ces précautions.' },
-    { question: 'Le code promo Bonjour Drink est-il valide en 2026 ?', answer: 'Oui, le code LMC20 est le code partenaire Bonjour Drink actif en 2026. Il permet d’obtenir -20% sur la boutique officielle. La remise est visible dans le panier avant la validation de la commande — vérifiez toujours avant de payer.' },
+    { question: 'Le code promo Bonjour Drink est-il valide en 2026 ?', answer: 'Oui, le code LMC20 est le code partenaire Bonjour Drink actif en 2026. Il permet d’obtenir -20% sur la boutique officielle. La remise est visible dans le panier avant la validation de la commande, vérifiez toujours avant de payer.' },
   ],
   products,
   tocItems: [
@@ -137,10 +139,10 @@ const config: SiteConfig = {
     { id: 'faq', label: 'FAQ' },
   ],
   pages: [
-    { type: 'blog', label: 'Code promo', slug: '/', image: '/images/bonjour-drink-hero-preparation.png' },
-    { type: 'blog', label: 'Avis Bonjour', slug: '/avis-bonjour-drink/', image: 'https://bonjourdrink.co/cdn/shop/files/BonjourDrink-7D-2-5-M_1_1618b982-cd73-4a41-a692-8824ed3e45d4.webp?v=1755870452' },
-    { type: 'blog', label: 'Danger', slug: '/boisson-bonjour-danger/', image: '/images/bonjour-drink-editorial-ingredients.png' },
-    { type: 'blog', label: 'Contact', slug: '/telephone-bonjour-drink/', image: '/images/bonjour-drink-hero-preparation.png' },
+    { type: 'blog', label: 'Code promo', slug: '/', image: '/images/bonjour-drink-hero-preparation.webp' },
+    { type: 'blog', label: 'Avis Bonjour', slug: '/avis-bonjour-drink/', image: '/images/bonjour-drink-avis-produit.webp' },
+    { type: 'blog', label: 'Danger', slug: '/boisson-bonjour-danger/', image: '/images/bonjour-drink-editorial-ingredients.webp' },
+    { type: 'blog', label: 'Contact', slug: '/telephone-bonjour-drink/', image: '/images/bonjour-drink-editorial-precautions.webp' },
   ],
 };
 
