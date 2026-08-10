@@ -20,6 +20,7 @@ const faq = [
   { question: 'Bonjour Drink est-il vendu en pharmacie ?', answer: 'Oui. La marque annonce une présence dans plus de 3 000 pharmacies en France. Le prix et les saveurs disponibles varient selon l’officine, et le code promo LMC20 ne fonctionne que sur le site officiel.' },
   { question: 'Peut-on acheter Bonjour Drink sur Amazon ?', answer: 'Des offres Bonjour Drink peuvent apparaître sur Amazon ou d’autres marketplaces. Avant d’acheter, vérifiez l’identité du vendeur, le prix par rapport au site officiel et les conditions de retour : la garantie 60 jours de la marque s’applique aux commandes passées sur sa boutique.' },
   { question: 'Quel est le prix de Bonjour Drink ?', answer: 'Le format de référence est le sachet de 30 tasses à 39,00 € en achat unique. Avec le code LMC20, le prix passe autour de 31,20 €. Des formats 60, 90 et 120 tasses font baisser le prix par tasse, et l’abonnement flexible ajoute une réduction supplémentaire.' },
+  { question: 'Bonjour Drink livre-t-il en Suisse et en Belgique ?', answer: 'Oui. La boutique officielle accepte les commandes depuis la Suisse, la Belgique, le Luxembourg et Monaco, avec paiement en euros. Les frais et délais s’affichent au checkout selon l’adresse, et une livraison vers la Suisse, hors Union européenne, peut entraîner des frais de douane à la réception.' },
   { question: 'Le code LMC20 fonctionne-t-il partout ?', answer: 'Non. LMC20 est un code partenaire valable uniquement sur la boutique officielle, en passant par notre lien. Il ne fonctionne ni en pharmacie, ni sur Amazon, ni en magasin.' },
 ];
 ---
@@ -78,6 +79,7 @@ const faq = [
           { id: 'site-officiel', label: 'Site officiel' },
           { id: 'pharmacie', label: 'En pharmacie' },
           { id: 'amazon-magasins', label: 'Amazon et magasins' },
+          { id: 'suisse-belgique', label: 'Suisse et Belgique' },
           { id: 'prix', label: 'Prix par format' },
           { id: 'conseils', label: 'Conseils avant achat' },
           { id: 'faq', label: 'FAQ' },
@@ -110,6 +112,12 @@ const faq = [
             <li><strong>Le prix :</strong> comparez toujours avec le site officiel, code appliqué. Un revendeur peut être plus cher que le prix direct remisé.</li>
             <li><strong>Les conditions :</strong> la garantie 60 jours et le service client 7j/7 de la marque s’appliquent aux commandes passées sur sa boutique, pas forcément ailleurs.</li>
           </ul>
+        </section>
+
+        <section id="suisse-belgique" class="article-section rich-text">
+          <h2>Bonjour Drink en Suisse, Belgique et Luxembourg</h2>
+          <p>Bonne nouvelle pour les lecteurs hors de France : la boutique officielle accepte les commandes depuis la <strong>Suisse</strong>, la <strong>Belgique</strong>, le <strong>Luxembourg</strong> et Monaco, avec un paiement en euros. Le parcours est le même que pour la France : lien officiel, saveurs et format au choix, code <strong>{config.promoCode}</strong> dans le panier.</p>
+          <p>Deux précisions avant de commander depuis la Suisse : les frais et délais de livraison exacts s'affichent au moment du checkout selon votre adresse, et une commande expédiée vers un pays hors Union européenne peut entraîner des frais de douane ou de TVA locale à la réception. Vérifiez le total affiché et, en cas de doute, posez la question au service client de la marque avant de valider.</p>
         </section>
 
         <div class="mid-card-wrap"><ReviewPromoCard product={promoProduct} /></div>
