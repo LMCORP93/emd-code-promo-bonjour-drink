@@ -39,7 +39,7 @@ const faq = [
     headline: pageTitle,
     description: pageDescription,
     url: pageUrl,
-    image: new URL('/images/bonjour-drink-abonnement-hero.webp', config.domain).toString(),
+    image: new URL('/images/bonjour-drink-abonnement-hero-v2.webp', config.domain).toString(),
     author: { '@type': 'Person', name: config.author.name },
     publisher: { '@type': 'Organization', name: config.siteName, logo: { '@type': 'ImageObject', url: new URL('/logo.svg', config.domain).toString() } },
     mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
@@ -60,7 +60,7 @@ const faq = [
     date="10 août 2026"
     readingTime="5 min de lecture"
     breadcrumbs={[{ label: 'Abonnement Bonjour Drink', href: '/bonjour-drink-abonnement/' }]}
-    bannerImage="/images/bonjour-drink-abonnement-hero.webp"
+    bannerImage="/images/bonjour-drink-abonnement-hero-v2.webp"
     product={{ name: product.name, image: product.image, promoCode: product.promoCode, promoPercent: product.promoPercent, originalPrice: product.originalPrice, discountPrice: product.discountPrice, affiliateLink: product.affiliateLink }}
     showOfferBlock={false} heroButton={{ text: "Lire la suite", href: "#intro" }} />
 
