@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogHero from '@/components/BlogHero.astro';
-import FirstReview from '@/components/FirstReview.astro';
 import TableOfContents from '@/components/TableOfContents.astro';
 import SidebarCTA from '@/components/SidebarCTA.astro';
 import FAQSection from '@/components/FAQSection.astro';
@@ -85,7 +84,7 @@ const productSchema = (p: typeof config.products[number]) => ({
     breadcrumbs={[{ label: 'Avis Bonjour Drink', href: '/avis-bonjour-drink/' }]}
     bannerImage="/images/bonjour-drink-avis-produit.webp"
     product={{ name: topProduct.name, image: topProduct.image, promoCode: topProduct.promoCode, promoPercent: topProduct.promoPercent, originalPrice: topProduct.originalPrice, discountPrice: topProduct.discountPrice, affiliateLink: topProduct.affiliateLink }}
-    heroButton={{ text: "Lire la suite", href: "#intro" }}
+    heroButton={{ text: "Lire la suite", href: "#en-bref" }}
     showOfferBlock={false}
   />
 
@@ -93,29 +92,6 @@ const productSchema = (p: typeof config.products[number]) => ({
     <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
       <div class="content-column">
         <InBriefBlock title={inBrief.title} paragraphs={inBrief.paragraphs} assets={inBrief.assets} considerations={inBrief.considerations} product={topProduct} />
-        <section id="intro">
-          <FirstReview
-            tag="Avis 2026"
-            heading="Résumé rapide de notre avis Bonjour Drink"
-            paragraphs={[
-              'Bonjour Drink réussit surtout sur un point : transformer la réduction du café en rituel simple et désirable. Le produit ne se présente pas comme une boisson énergétique brutale, mais comme une alternative chaude, gourmande et fonctionnelle, avec des rituels jour et nuit. C’est plus crédible qu’une promesse unique censée tout résoudre.',
-              'Notre avis est favorable pour les personnes qui veulent garder le geste du café tout en cherchant une routine plus douce. En revanche, il faut être honnête : le produit est premium, le goût cacao-végétal ne plaira pas à tout le monde, et les bénéfices ressentis restent individuels.'
-            ]}
-            assets={[
-              'Positionnement clair : alternative au café',
-              'Rituels jour et nuit séparés',
-              'Formule française annoncée avec plantes et champignons',
-              'Garantie 60 jours mise en avant par la marque'
-            ]}
-            considerations={[
-              'Prix élevé sans réduction',
-              'Goût spécifique selon les saveurs',
-              'Effets ressentis variables',
-              'Précautions santé à lire sur la page dédiée'
-            ]}
-            product={{ brandName: 'Bonjour', brandLogoSrc: topProduct.brandLogo, rating: topProduct.rating, reviewLabel: 'Note éditoriale LMC, méthode ci-dessous', ctaText: 'Voir l’offre', ctaLink: topProduct.affiliateLink }}
-          />
-        </section>
 
         <TableOfContents items={[
           { id: 'avis', label: 'Notre avis' },
