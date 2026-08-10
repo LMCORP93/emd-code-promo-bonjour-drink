@@ -1,0 +1,147 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogHero from '@/components/BlogHero.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+import FAQSection from '@/components/FAQSection.astro';
+import InnerNote from '@/components/InnerNote.astro';
+import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
+import SidebarCTA from '@/components/SidebarCTA.astro';
+import ContentImage from '@/components/ContentImage.astro';
+import config from '@/data/site.config';
+import ArticleGrid from '@/components/ArticleGrid.astro';
+
+const product = config.products[0];
+const promoProduct = { ...product, productCategory: config.productCategory, shipping: 'France, Colissimo / Mondial Relay' };
+const pageTitle = 'Composition Bonjour Drink : ingrédients et dosages';
+const pageUrl = `${config.domain}/bonjour-drink-composition/`;
+const pageDescription = 'Composition Bonjour Drink : 2 700 mg d’extraits bio par tasse, plantes et champignons, vitamines et minéraux, caféine, calories et contrôles qualité.';
+const faq = [
+  { question: 'Quelle est la composition de Bonjour Drink ?', answer: 'La formule annoncée repose sur 2 700 mg d’extraits biologiques français par tasse, avec 5 plantes et champignons, 6 vitamines et minéraux et des fibres, dans une base gourmande au cacao. Le détail exact figure sur la fiche de chaque saveur.' },
+  { question: 'Quels champignons contient Bonjour Drink ?', answer: 'Le rituel jour s’appuie notamment sur le Lion’s Mane, le cordyceps et le chaga, associés à des plantes comme le ginseng et la mauve. Le rituel Nuit repose sur le reishi, la passiflore, la camomille, l’anis vert et la L-théanine.' },
+  { question: 'Bonjour Drink contient-il de la caféine ?', answer: 'Le rituel jour est pensé comme une alternative au café, avec un effet plus progressif qu’un espresso. La teneur en caféine dépend de la saveur choisie : la référence Café Decaf et le rituel Nuit s’adressent aux personnes qui veulent l’éviter. Vérifiez la fiche produit de la saveur avant achat.' },
+  { question: 'Bonjour Drink est-il calorique ?', answer: 'La boisson se prépare à partir d’une poudre sans sucres ajoutés. L’apport calorique final dépend surtout de la préparation, à l’eau ou avec un lait, ainsi que de la saveur. Le tableau nutritionnel exact figure sur chaque sachet.' },
+  { question: 'La qualité de la formule est-elle contrôlée ?', answer: 'La marque annonce une fabrication française avec un laboratoire spécialisé, et des analyses portant sur les pesticides, les métaux lourds, les allergènes et les OGM, menées avec un laboratoire indépendant. Ce sont des déclarations de la marque, cohérentes avec son positionnement premium.' },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: config.domain },
+      { '@type': 'ListItem', position: 2, name: 'Composition Bonjour Drink', item: pageUrl },
+    ],
+  })} />
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: pageTitle,
+    description: pageDescription,
+    url: pageUrl,
+    image: new URL('/images/bonjour-drink-composition-hero.webp', config.domain).toString(),
+    author: { '@type': 'Person', name: config.author.name },
+    publisher: { '@type': 'Organization', name: config.siteName, logo: { '@type': 'ImageObject', url: new URL('/logo.svg', config.domain).toString() } },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+    datePublished: '2026-08-10',
+    dateModified: '2026-08-10',
+  })} />
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })),
+  })} />
+
+  <BlogHero
+    title={pageTitle}
+    description="Ce que contient vraiment une tasse de Bonjour Drink : extraits de plantes et champignons, vitamines, fibres, caféine et calories, avec les contrôles qualité annoncés par la marque."
+    author={config.author.name}
+    authorAvatar={config.author.avatar}
+    date="10 août 2026"
+    readingTime="6 min de lecture"
+    breadcrumbs={[{ label: 'Composition Bonjour Drink', href: '/bonjour-drink-composition/' }]}
+    bannerImage="/images/bonjour-drink-composition-hero.webp"
+    product={{ name: product.name, image: product.image, promoCode: product.promoCode, promoPercent: product.promoPercent, originalPrice: product.originalPrice, discountPrice: product.discountPrice, affiliateLink: product.affiliateLink }}
+    showOfferBlock={false} heroButton={{ text: "Lire la suite", href: "#intro" }} />
+
+  <main style="background-color:#ffffff;">
+    <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
+      <div class="content-column">
+        <section id="intro" class="quick-card">
+          <p class="eyebrow">Réponse rapide</p>
+          <h2>Que contient une tasse de Bonjour Drink ?</h2>
+          <p>Chaque tasse repose, selon la marque, sur <strong>2 700 mg d’extraits biologiques français</strong> combinant 5 plantes et champignons, complétés par 6 vitamines et minéraux et des fibres, dans une base gourmande au cacao. Le tout est vegan, sans sucres ajoutés, sans gluten, sans lactose et sans additifs ni conservateurs.</p>
+          <p>La composition précise varie selon la saveur et le rituel choisi, jour ou nuit. Cette page donne les repères pour lire une fiche produit sans se perdre.</p>
+        </section>
+
+        <TableOfContents items={[
+          { id: 'formule', label: 'La formule de base' },
+          { id: 'champignons-plantes', label: 'Champignons et plantes' },
+          { id: 'cafeine', label: 'Caféine' },
+          { id: 'calories', label: 'Calories et sucres' },
+          { id: 'qualite', label: 'Contrôles qualité' },
+          { id: 'faq', label: 'FAQ' },
+        ]} />
+
+        <section id="formule" class="article-section rich-text">
+          <h2>La formule de base : extraits, vitamines et fibres</h2>
+          <p>Le cœur de la proposition Bonjour Drink est un dosage annoncé de 2 700 mg d’extraits biologiques par tasse. C’est le chiffre à retenir pour comparer avec d’autres boissons fonctionnelles, dont beaucoup restent en dessous ou ne communiquent tout simplement pas leur dosage réel.</p>
+          <p>Autour de ces extraits, la marque ajoute 6 vitamines et minéraux et des fibres, ce qui rapproche la boisson d’un complément alimentaire du quotidien plus que d’une simple boisson cacaotée. La formule est développée avec un laboratoire français spécialisé dans les compléments alimentaires depuis plus de vingt ans, selon la marque.</p>
+        </section>
+
+        <ContentImage
+          src="/images/bonjour-drink-editorial-ingredients.webp"
+          alt="Ingrédients de la formule Bonjour Drink : cacao, plantes et champignons"
+        />
+
+        <section id="champignons-plantes" class="article-section rich-text">
+          <h2>Champignons et plantes : qui fait quoi ?</h2>
+          <p>Le rituel jour s’articule autour d’ingrédients associés à l’énergie et à la clarté mentale dans l’univers des adaptogènes : <strong>ginseng, Lion’s Mane, cordyceps, chaga</strong>, complétés par la mauve pour le versant digestif. C’est la colonne vertébrale des saveurs Original, Cacao, Café et de leurs déclinaisons.</p>
+          <p>Le rituel Nuit change complètement de registre : <strong>reishi, passiflore, camomille, anis vert et L-théanine</strong>, une combinaison orientée détente et préparation au sommeil. Ces ingrédients relèvent du complément alimentaire : ils accompagnent une routine, ils ne traitent aucune pathologie.</p>
+        </section>
+
+        <InnerNote emoji="🔎" text="Les compositions détaillées par saveur, avec les dosages exacts de chaque extrait, figurent sur les fiches produit de la boutique officielle. C’est la source à consulter avant achat, notamment en cas d’allergie." />
+
+        <section id="cafeine" class="article-section rich-text">
+          <h2>Caféine : selon la saveur choisie</h2>
+          <p>Bonjour Drink se positionne comme une alternative au café, pas comme un décaféiné généralisé. Concrètement, le rituel jour vise une énergie plus progressive qu’un espresso, sans le pic ni le crash mis en avant par la marque dans sa communication.</p>
+          <p>Si vous cherchez à réduire ou éliminer la caféine, deux options existent dans la gamme : la saveur <strong>Café Decaf</strong> et le rituel <strong>Nuit</strong>, construit pour le soir. Dans tous les cas, la teneur exacte en caféine d’une saveur se vérifie sur sa fiche produit, c’est le seul référentiel fiable.</p>
+        </section>
+
+        <div class="mid-card-wrap"><ReviewPromoCard product={promoProduct} /></div>
+
+        <section id="calories" class="article-section rich-text">
+          <h2>Calories et sucres : ce que dit la formule</h2>
+          <p>La poudre est annoncée sans sucres ajoutés, ce qui la distingue de la plupart des boissons cacaotées classiques du commerce. L’apport calorique final d’une tasse dépend donc surtout de votre préparation : à l’eau, il reste léger ; avec un lait entier ou une boisson végétale sucrée, c’est la base liquide qui pèse le plus.</p>
+          <p>Pour un chiffre exact par portion, reportez-vous au tableau nutritionnel imprimé sur le sachet de la saveur choisie. C’est aussi là que figurent les valeurs par 100 g exigées par la réglementation.</p>
+        </section>
+
+        <section id="qualite" class="article-section rich-text">
+          <h2>Contrôles qualité : ce que la marque annonce</h2>
+          <p>Bonjour Drink met en avant une fabrication française, des extraits issus de filières biologiques et des analyses régulières portant sur les pesticides, les métaux lourds, les allergènes, les OGM et les additifs, conduites avec un laboratoire indépendant. Ce niveau de communication sur la traçabilité reste au-dessus de la moyenne du segment.</p>
+          <p>Restons précis sur la méthode : ce sont des déclarations de la marque, que nous relayons comme telles. Elles sont cohérentes avec le positionnement premium et le prix, et la garantie satisfait ou remboursé de 60 jours permet de juger le produit sans risque sur une première commande passée sur le site officiel, surtout avec le code <strong>{config.promoCode}</strong> appliqué.</p>
+        </section>
+
+        <section id="faq" class="faq-section"><FAQSection faq={faq} title="FAQ composition Bonjour Drink" /></section>
+      </div>
+
+      <aside class="sidebar-column"><div class="sidebar-sticky"><SidebarCTA logoSrc={product.brandLogo} promoCode={product.promoCode} promoPercent={product.promoPercent} originalPrice={product.originalPrice} discountPrice={product.discountPrice} ctaLink={product.affiliateLink} heroImage={product.image} rating={product.rating} reviewCount={product.reviewCount} /></div></aside>
+    </div></div></div>
+  </main>
+  <ArticleGrid />
+</BaseLayout>
+
+<style>
+  .quick-card { background:#f8f4ec; border:1px solid #eadfce; border-radius:16px; padding:1.5rem; margin-bottom:2rem; }
+  .quick-card .eyebrow { color:#ef7a1a; font-family:'Archivo',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.06em; font-size:.78rem; margin:0 0 .45rem; }
+  .quick-card h2 { margin:0 0 .8rem; line-height:1.2; }
+  .quick-card p { margin:0; color:#444; line-height:1.7; }
+  .quick-card p + p { margin-top:.9rem; }
+  .article-section { margin-top:2.1rem; }
+  .article-section h2 { margin:0 0 .85rem; line-height:1.2; }
+  .article-section p { margin:0; line-height:1.72; color:#444; }
+  .article-section p + p { margin-top:1rem; }
+  .article-section ul { margin:1rem 0 0; padding-left:1.25rem; color:#444; line-height:1.7; }
+  .mid-card-wrap { margin:2rem 0 2.1rem; }
+  .faq-section { margin-top:3rem; }
+</style>

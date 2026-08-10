@@ -1,0 +1,151 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogHero from '@/components/BlogHero.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+import FAQSection from '@/components/FAQSection.astro';
+import InnerNote from '@/components/InnerNote.astro';
+import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
+import SidebarCTA from '@/components/SidebarCTA.astro';
+import ContentImage from '@/components/ContentImage.astro';
+import config from '@/data/site.config';
+import ArticleGrid from '@/components/ArticleGrid.astro';
+
+const product = config.products[0];
+const promoProduct = { ...product, productCategory: config.productCategory, shipping: 'France, Colissimo / Mondial Relay' };
+const pageTitle = 'Où acheter Bonjour Drink : pharmacie, Amazon, prix';
+const pageUrl = `${config.domain}/ou-acheter-bonjour-drink/`;
+const pageDescription = 'Où acheter Bonjour Drink en 2026 : site officiel, pharmacies, Amazon et magasins, prix réel par format et code promo LMC20 pour payer moins cher.';
+const faq = [
+  { question: 'Où acheter Bonjour Drink au meilleur prix ?', answer: 'Le meilleur point d’achat reste la boutique officielle bonjourdrink.co : c’est là que s’appliquent le code partenaire LMC20, la garantie satisfait ou remboursé de 60 jours et les offres par format. Les revendeurs ne proposent pas toujours ces avantages.' },
+  { question: 'Bonjour Drink est-il vendu en pharmacie ?', answer: 'Oui. La marque annonce une présence dans plus de 3 000 pharmacies en France. Le prix et les saveurs disponibles varient selon l’officine, et le code promo LMC20 ne fonctionne que sur le site officiel.' },
+  { question: 'Peut-on acheter Bonjour Drink sur Amazon ?', answer: 'Des offres Bonjour Drink peuvent apparaître sur Amazon ou d’autres marketplaces. Avant d’acheter, vérifiez l’identité du vendeur, le prix par rapport au site officiel et les conditions de retour : la garantie 60 jours de la marque s’applique aux commandes passées sur sa boutique.' },
+  { question: 'Quel est le prix de Bonjour Drink ?', answer: 'Le format de référence est le sachet de 30 tasses à 39,00 € en achat unique. Avec le code LMC20, le prix passe autour de 31,20 €. Des formats 60, 90 et 120 tasses font baisser le prix par tasse, et l’abonnement flexible ajoute une réduction supplémentaire.' },
+  { question: 'Le code LMC20 fonctionne-t-il partout ?', answer: 'Non. LMC20 est un code partenaire valable uniquement sur la boutique officielle, en passant par notre lien. Il ne fonctionne ni en pharmacie, ni sur Amazon, ni en magasin.' },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: config.domain },
+      { '@type': 'ListItem', position: 2, name: 'Où acheter Bonjour Drink', item: pageUrl },
+    ],
+  })} />
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: pageTitle,
+    description: pageDescription,
+    url: pageUrl,
+    image: new URL('/images/bonjour-drink-ou-acheter-hero.webp', config.domain).toString(),
+    author: { '@type': 'Person', name: config.author.name },
+    publisher: { '@type': 'Organization', name: config.siteName, logo: { '@type': 'ImageObject', url: new URL('/logo.svg', config.domain).toString() } },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+    datePublished: '2026-08-10',
+    dateModified: '2026-08-10',
+  })} />
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })),
+  })} />
+
+  <BlogHero
+    title={pageTitle}
+    description="Site officiel, pharmacie, Amazon, magasin : tous les points de vente Bonjour Drink comparés, avec le prix réel par format et la seule option où le code LMC20 s’applique."
+    author={config.author.name}
+    authorAvatar={config.author.avatar}
+    date="10 août 2026"
+    readingTime="6 min de lecture"
+    breadcrumbs={[{ label: 'Où acheter Bonjour Drink', href: '/ou-acheter-bonjour-drink/' }]}
+    bannerImage="/images/bonjour-drink-ou-acheter-hero.webp"
+    product={{ name: product.name, image: product.image, promoCode: product.promoCode, promoPercent: product.promoPercent, originalPrice: product.originalPrice, discountPrice: product.discountPrice, affiliateLink: product.affiliateLink }}
+    showOfferBlock={false} heroButton={{ text: "Lire la suite", href: "#intro" }} />
+
+  <main style="background-color:#ffffff;">
+    <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
+      <div class="content-column">
+        <section id="intro" class="quick-card">
+          <p class="eyebrow">Réponse rapide</p>
+          <h2>Où acheter Bonjour Drink aujourd’hui ?</h2>
+          <p>Bonjour Drink s’achète principalement sur la boutique officielle bonjourdrink.co, et la marque annonce aussi une présence dans plus de 3 000 pharmacies en France. On croise parfois des offres sur les marketplaces, mais elles n’ouvrent ni la garantie 60 jours ni le code partenaire.</p>
+          <p>Notre lecture est simple : pour une première commande, le site officiel avec le code <strong>{config.promoCode}</strong> reste l’option la plus avantageuse, car elle cumule le prix réduit, la garantie et le choix complet des saveurs.</p>
+        </section>
+
+        <TableOfContents items={[
+          { id: 'site-officiel', label: 'Site officiel' },
+          { id: 'pharmacie', label: 'En pharmacie' },
+          { id: 'amazon-magasins', label: 'Amazon et magasins' },
+          { id: 'prix', label: 'Prix par format' },
+          { id: 'conseils', label: 'Conseils avant achat' },
+          { id: 'faq', label: 'FAQ' },
+        ]} />
+
+        <section id="site-officiel" class="article-section rich-text">
+          <h2>Le site officiel : l’option la plus complète</h2>
+          <p>La boutique bonjourdrink.co est le seul canal qui regroupe toute l’offre : les saveurs du rituel jour, la gamme Nuit, les formats 30 à 120 tasses, l’abonnement flexible et les éventuels cadeaux liés aux packs. C’est aussi le seul endroit où s’applique la garantie satisfait ou remboursé de 60 jours mise en avant par la marque.</p>
+          <p>Côté budget, c’est là que notre partenariat joue : le code <strong>{config.promoCode}</strong> saisi dans le panier réduit le prix de 20 % en passant par notre lien. La livraison est assurée en France via Colissimo ou Mondial Relay, avec des seuils de livraison offerte selon le panier.</p>
+        </section>
+
+        <ContentImage
+          src="/images/bonjour-drink-avis-produit.webp"
+          alt="Sachet et tasse de la boisson Bonjour Drink présentés par la marque"
+        />
+
+        <section id="pharmacie" class="article-section rich-text">
+          <h2>Bonjour Drink en pharmacie : ce qu’il faut savoir</h2>
+          <p>La marque communique sur une distribution dans plus de 3 000 pharmacies françaises. C’est un vrai point de réassurance : voir le produit en officine rassure sur le sérieux de la formule, et cela permet d’acheter sans attendre une livraison.</p>
+          <p>Deux limites à connaître avant de vous déplacer. D’abord, chaque officine choisit son assortiment : rien ne garantit que votre pharmacie de quartier référence la marque ou la saveur que vous cherchez, le plus fiable est d’appeler avant. Ensuite, le prix conseillé peut différer du tarif en ligne, et aucun code promo ne s’applique en caisse.</p>
+        </section>
+
+        <InnerNote emoji="💊" text="La disponibilité en pharmacie est une information communiquée par la marque. L’assortiment, le prix et le stock restent à la discrétion de chaque officine." />
+
+        <section id="amazon-magasins" class="article-section rich-text">
+          <h2>Amazon, Leclerc, magasins : prudence sur les revendeurs</h2>
+          <p>Les recherches du type Bonjour Drink Amazon ou Bonjour Drink Leclerc sont fréquentes, et des offres peuvent effectivement apparaître sur les marketplaces ou en grande surface. Avant d’acheter hors circuit officiel, trois vérifications s’imposent.</p>
+          <ul>
+            <li><strong>Le vendeur :</strong> sur une marketplace, contrôlez qui expédie réellement le produit et sa note vendeur.</li>
+            <li><strong>Le prix :</strong> comparez toujours avec le site officiel, code appliqué. Un revendeur peut être plus cher que le prix direct remisé.</li>
+            <li><strong>Les conditions :</strong> la garantie 60 jours et le service client 7j/7 de la marque s’appliquent aux commandes passées sur sa boutique, pas forcément ailleurs.</li>
+          </ul>
+        </section>
+
+        <div class="mid-card-wrap"><ReviewPromoCard product={promoProduct} /></div>
+
+        <section id="prix" class="article-section rich-text">
+          <h2>Prix Bonjour Drink : les repères par format</h2>
+          <p>Au moment de la rédaction, le format de référence est le sachet de 30 tasses affiché à <strong>{config.originalPrice}</strong> en achat unique. Avec le code <strong>{config.promoCode}</strong>, ce prix descend autour de <strong>{config.discountPrice}</strong>. Les formats 60, 90 et 120 tasses font mécaniquement baisser le prix par tasse, et l’abonnement flexible affiche des tarifs encore inférieurs, autour de 0,76 à 1,04 € la tasse selon le pack.</p>
+          <p>Ces montants évoluent au rythme des offres de la marque : le bon réflexe est de vérifier le total dans le panier, code appliqué, avant de payer. Notre page dédiée au code promo détaille la marche à suivre pas à pas.</p>
+        </section>
+
+        <section id="conseils" class="article-section rich-text">
+          <h2>Avant d’acheter : trois conseils simples</h2>
+          <p>Premier conseil : méfiez-vous des faux codes promo publiés par des sites tiers. Un code qui ne vient ni de la marque ni d’un partenaire identifié échoue en caisse et fait perdre du temps. Deuxième conseil : pour un premier essai, le format 30 tasses suffit à se faire un avis sur le goût et la tolérance, la garantie 60 jours couvrant la première commande.</p>
+          <p>Troisième conseil : si votre objectif est le prix par tasse le plus bas, comparez l’achat unique remisé et l’abonnement flexible, qui reste sans engagement et annulable à tout moment. Notre page avis complète ces repères par une analyse du produit lui-même.</p>
+        </section>
+
+        <section id="faq" class="faq-section"><FAQSection faq={faq} title="FAQ : où acheter Bonjour Drink" /></section>
+      </div>
+
+      <aside class="sidebar-column"><div class="sidebar-sticky"><SidebarCTA logoSrc={product.brandLogo} promoCode={product.promoCode} promoPercent={product.promoPercent} originalPrice={product.originalPrice} discountPrice={product.discountPrice} ctaLink={product.affiliateLink} heroImage={product.image} rating={product.rating} reviewCount={product.reviewCount} /></div></aside>
+    </div></div></div>
+  </main>
+  <ArticleGrid />
+</BaseLayout>
+
+<style>
+  .quick-card { background:#f8f4ec; border:1px solid #eadfce; border-radius:16px; padding:1.5rem; margin-bottom:2rem; }
+  .quick-card .eyebrow { color:#ef7a1a; font-family:'Archivo',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.06em; font-size:.78rem; margin:0 0 .45rem; }
+  .quick-card h2 { margin:0 0 .8rem; line-height:1.2; }
+  .quick-card p { margin:0; color:#444; line-height:1.7; }
+  .quick-card p + p { margin-top:.9rem; }
+  .article-section { margin-top:2.1rem; }
+  .article-section h2 { margin:0 0 .85rem; line-height:1.2; }
+  .article-section p { margin:0; line-height:1.72; color:#444; }
+  .article-section p + p { margin-top:1rem; }
+  .article-section ul { margin:1rem 0 0; padding-left:1.25rem; color:#444; line-height:1.7; }
+  .mid-card-wrap { margin:2rem 0 2.1rem; }
+  .faq-section { margin-top:3rem; }
+</style>
