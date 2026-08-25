@@ -77,7 +77,7 @@ const productSchema = (p: typeof config.products[number]) => ({
 
   <BlogHero
     title={pageTitle}
-    description="Un avis centré sur l’expérience produit : goût, routine, formule, preuve sociale, prix réel et méthode de notation — sans mélanger avec la page code promo ni la page santé."
+    description="Un avis centré sur l’expérience produit : goût, routine, formule, preuve sociale, prix réel et méthode de notation, sans mélanger avec la page code promo ni la page santé."
     author={config.author.name}
     authorAvatar={config.author.avatar}
     date="27 avril 2026"
@@ -89,7 +89,7 @@ const productSchema = (p: typeof config.products[number]) => ({
     showOfferBlock={false}
   />
 
-  <main style="background-color:#ffffff;">
+  <main style="background-color:#fcfbf7;">
     <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
       <div class="content-column">
         <InBriefBlock title={inBrief.title} paragraphs={inBrief.paragraphs} assets={inBrief.assets} considerations={inBrief.considerations} product={topProduct} />
@@ -208,7 +208,7 @@ const productSchema = (p: typeof config.products[number]) => ({
           <p>Si vous êtes un adulte en bonne santé, commencez simplement par une utilisation normale et progressive. Si vous êtes dans un profil sensible, demandez un avis médical avant de tester. Cette distinction permet de garder un avis produit utile sans faire de promesse santé excessive.</p>
         </section>
 
-        <InnerNote emoji="📌" text="La page avis est volontairement centrée sur l’expérience et la méthode de notation. Les questions santé détaillées sont concentrées sur /boisson-bonjour-danger/ pour mieux répondre aux recherches danger et contre-indications." />
+        <InnerNote emoji="" text="La page avis est volontairement centrée sur l’expérience et la méthode de notation. Les questions santé détaillées sont concentrées sur /boisson-bonjour-danger/ pour mieux répondre aux recherches danger et contre-indications." />
 
         <section id="verdict" class="article-section rich-text">
           <h2>Verdict : faut-il acheter Bonjour Drink ?</h2>
@@ -244,5 +244,5 @@ const productSchema = (p: typeof config.products[number]) => ({
   .article-section p + p { margin-top: 1rem; }
   .method-box { background:#f8f4ec; border:1px solid #eadfce; border-radius:12px; padding:1.4rem; }
   .mid-card-wrap { margin: 2rem 0 2.1rem; }
-  .faq-section { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
+  .faq-section { margin-top: 3rem; }
 </style>

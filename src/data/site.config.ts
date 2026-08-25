@@ -64,7 +64,7 @@ const products: Product[] = [
     originalPrice: '39,00 €',
     discountPrice: '31,20 €',
     affiliateLink: 'https://taap.it/bonjour-drink-lmc',
-    origin: '🇫🇷 France',
+    origin: 'France',
     availability: 'Livraison en France possible via la boutique officielle ou un revendeur',
     productType: 'Boisson fonctionnelle aux champignons adaptogènes',
     pros: [
@@ -90,7 +90,7 @@ const config: SiteConfig = {
   product: products[0].name,
   productCategory: 'Café adaptogène et boisson fonctionnelle',
   productFormat: 'Poudre à mélanger',
-  tagline: 'Code promo Bonjour Drink LMC20 vérifié en 2026 — -20% sur la boisson adaptogène française.',
+  tagline: 'Code promo Bonjour Drink LMC20 vérifié en 2026, -20% sur la boisson adaptogène française.',
   affiliateLink: products[0].affiliateLink,
   promoCode: products[0].promoCode,
   originalPrice: products[0].originalPrice,
@@ -121,7 +121,7 @@ const config: SiteConfig = {
     { question: 'Bonjour Drink remplace-t-il le café ?', answer: 'Bonjour Drink se présente comme une alternative plus douce au café, avec cacao, plantes et champignons adaptogènes. L’objectif est une routine plus stable, pas un effet stimulant brutal.' },
     { question: 'Pourquoi le code promo ne fonctionne pas ?', answer: 'Le code peut ne pas fonctionner si vous n’êtes pas passé par le lien partenaire, si une autre offre est déjà active ou si le panier contient un produit non éligible. Le bon réflexe est de repartir du lien officiel puis de retester LMC20.' },
     { question: 'Bonjour Drink est-il adapté à tout le monde ?', answer: 'Comme pour tout complément ou boisson fonctionnelle, il faut rester prudent en cas de grossesse, allaitement, traitement médical, intestin irritable ou sensibilité particulière. La page danger détaille ces précautions.' },
-    { question: 'Le code promo Bonjour Drink est-il valide en 2026 ?', answer: 'Oui, le code LMC20 est le code partenaire Bonjour Drink actif en 2026. Il permet d’obtenir -20% sur la boutique officielle. La remise est visible dans le panier avant la validation de la commande — vérifiez toujours avant de payer.' },
+    { question: 'Le code promo Bonjour Drink est-il valide en 2026 ?', answer: 'Oui, le code LMC20 est le code partenaire Bonjour Drink actif en 2026. Il permet d’obtenir -20% sur la boutique officielle. La remise est visible dans le panier avant la validation de la commande, vérifiez toujours avant de payer.' },
   ],
   products,
   tocItems: [
