@@ -77,7 +77,7 @@ const productSchema = (p: typeof config.products[number]) => ({
     description: config.seo.description,
     image: `${config.domain}${config.seo.ogImage}`,
     author: { '@type': 'Person', name: config.author.name },
-    publisher: { '@type': 'Organization', name: 'LMC' },
+    publisher: { '@type': 'Organization', name: config.siteName },
     mainEntityOfPage: config.domain,
     datePublished: '2026-04-26',
     dateModified: '2026-04-26',
