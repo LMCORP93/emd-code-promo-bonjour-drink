@@ -143,6 +143,10 @@ const config: SiteConfig = {
     { type: 'blog', label: 'Avis Bonjour', slug: '/avis-bonjour-drink/', image: 'https://bonjourdrink.co/cdn/shop/files/BonjourDrink-7D-2-5-M_1_1618b982-cd73-4a41-a692-8824ed3e45d4.webp?v=1755870452' },
     { type: 'blog', label: 'Bonjour Drink : danger ?', slug: '/boisson-bonjour-danger/', image: '/images/bonjour-drink-editorial-ingredients.png' },
     { type: 'blog', label: 'Téléphone Bonjour Drink', slug: '/telephone-bonjour-drink/', image: '/images/bonjour-drink-hero-preparation.png' },
+    { type: 'blog', label: 'Où acheter', slug: '/ou-acheter-bonjour-drink/', image: '/images/bonjour-drink-ou-acheter-hero-v2.webp' },
+    { type: 'blog', label: 'Composition', slug: '/bonjour-drink-composition/', image: '/images/bonjour-drink-composition-hero.webp' },
+    { type: 'blog', label: 'Abonnement', slug: '/bonjour-drink-abonnement/', image: '/images/bonjour-drink-abonnement-hero-v2.webp' },
+    { type: 'blog', label: 'Goût et saveurs', slug: '/bonjour-drink-gout-saveurs/', image: '/images/bonjour-drink-editorial-routine.webp' },
   ],
 };
 
