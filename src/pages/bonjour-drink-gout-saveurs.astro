@@ -1,0 +1,147 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogHero from '@/components/BlogHero.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+import FAQSection from '@/components/FAQSection.astro';
+import InnerNote from '@/components/InnerNote.astro';
+import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
+import SidebarCTA from '@/components/SidebarCTA.astro';
+import ContentImage from '@/components/ContentImage.astro';
+import config from '@/data/site.config';
+import ArticleGrid from '@/components/ArticleGrid.astro';
+
+const product = config.products[0];
+const promoProduct = { ...product, productCategory: config.productCategory, shipping: 'France, Colissimo / Mondial Relay' };
+const pageTitle = 'Goût Bonjour Drink : quelle saveur choisir ?';
+const pageUrl = `${config.domain}/bonjour-drink-gout-saveurs/`;
+const pageDescription = 'Goût Bonjour Drink : profil des saveurs Original, Cacao, Café, Chocolat Gourmand, Rooibos Chaï, Decaf et Camomille du rituel Nuit. Comment bien choisir.';
+const faq = [
+  { question: 'Quel goût a Bonjour Drink ?', answer: 'La base est un cacao végétal gourmand, plus doux et moins amer qu’un café. Le profil exact dépend de la saveur : cacao et chocolat pour les gourmandes, notes torréfiées pour Café et Decaf, épices douces pour Rooibos Chaï, infusion florale pour la Camomille du soir.' },
+  { question: 'Quelle saveur Bonjour Drink choisir pour commencer ?', answer: 'Pour un premier essai, les saveurs Original ou Cacao sont les plus consensuelles d’après le positionnement de la gamme et les retours clients mis en avant par la marque. Les habitués du café classique s’orientent plutôt vers la saveur Café.' },
+  { question: 'La saveur Camomille contient-elle de la caféine ?', answer: 'La Camomille appartient au rituel Nuit, construit autour du reishi, de la passiflore, de la camomille, de l’anis vert et de la L-théanine, pensé pour le soir. Vérifiez la fiche produit pour la composition exacte de la référence.' },
+  { question: 'Peut-on préparer Bonjour Drink froid ou avec du lait ?', answer: 'Oui. La poudre se prépare chaude ou froide, à l’eau ou avec le lait ou la boisson végétale de votre choix. Un mousseur facilite la texture, la marque l’offre d’ailleurs sur certains packs.' },
+  { question: 'Et si le goût ne plaît pas ?', answer: 'La première commande sur le site officiel est couverte par la garantie satisfait ou remboursé de 60 jours annoncée par la marque. C’est le filet de sécurité si le profil cacao végétal ne vous convient pas.' },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: config.domain },
+      { '@type': 'ListItem', position: 2, name: 'Goût et saveurs Bonjour Drink', item: pageUrl },
+    ],
+  })} />
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: pageTitle,
+    description: pageDescription,
+    url: pageUrl,
+    image: new URL('/images/bonjour-drink-editorial-routine.webp', config.domain).toString(),
+    author: { '@type': 'Person', name: config.author.name },
+    publisher: { '@type': 'Organization', name: config.siteName, logo: { '@type': 'ImageObject', url: new URL('/logo.svg', config.domain).toString() } },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+    datePublished: '2026-08-10',
+    dateModified: '2026-08-10',
+  })} />
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })),
+  })} />
+
+  <BlogHero
+    title={pageTitle}
+    description="Cacao végétal, notes torréfiées, épices ou camomille du soir : le profil de chaque saveur Bonjour Drink et la méthode simple pour choisir celle qui tiendra dans la durée."
+    author={config.author.name}
+    authorAvatar={config.author.avatar}
+    date="10 août 2026"
+    readingTime="5 min de lecture"
+    breadcrumbs={[{ label: 'Goût et saveurs', href: '/bonjour-drink-gout-saveurs/' }]}
+    bannerImage="/images/bonjour-drink-editorial-routine.webp"
+    product={{ name: product.name, image: product.image, promoCode: product.promoCode, promoPercent: product.promoPercent, originalPrice: product.originalPrice, discountPrice: product.discountPrice, affiliateLink: product.affiliateLink }}
+    showOfferBlock={false} heroButton={{ text: "Lire la suite", href: "#intro" }} />
+
+  <main style="background-color:#ffffff;">
+    <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
+      <div class="content-column">
+        <section id="intro" class="quick-card">
+          <p class="eyebrow">Réponse rapide</p>
+          <h2>À quoi s’attendre côté goût ?</h2>
+          <p>Bonjour Drink n’imite pas l’espresso : la base est un <strong>cacao végétal gourmand</strong>, plus rond et moins amer qu’un café, à préparer chaud ou froid, à l’eau ou avec un lait. Les retours mis en avant par la marque donnent 95 % de clients satisfaits du goût, un chiffre déclaratif mais cohérent avec le positionnement plaisir de la gamme.</p>
+          <p>Le vrai sujet n’est pas de savoir si c’est bon, c’est de choisir la saveur qui correspond à votre moment de consommation : matin gourmand, remplacement du café ou rituel du soir.</p>
+        </section>
+
+        <TableOfContents items={[
+          { id: 'profil', label: 'Le profil gustatif' },
+          { id: 'saveurs-jour', label: 'Les saveurs du jour' },
+          { id: 'camomille-nuit', label: 'Camomille et rituel Nuit' },
+          { id: 'bien-choisir', label: 'Bien choisir et bien préparer' },
+          { id: 'faq', label: 'FAQ' },
+        ]} />
+
+        <section id="profil" class="article-section rich-text">
+          <h2>Le profil gustatif : un cacao fonctionnel, pas un café bis</h2>
+          <p>La première chose à intégrer avant d’acheter : Bonjour Drink assume un registre gourmand. La poudre marie cacao, plantes et champignons, sans sucres ajoutés, ce qui donne une boisson moins sucrée qu’un chocolat chaud du commerce et moins amère qu’un café serré. Les extraits végétaux apportent une légère note de fond que la plupart des saveurs enrobent bien.</p>
+          <p>C’est aussi pour cela que le goût demande parfois quelques jours d’adaptation, un point que nous assumons dans notre avis : on change de référentiel, on ne remplace pas un espresso par un espresso.</p>
+        </section>
+
+        <ContentImage
+          src="/images/bonjour-drink-avis-rituel.webp"
+          alt="Gamme de sachets Bonjour Drink et boisson préparée"
+        />
+
+        <section id="saveurs-jour" class="article-section rich-text">
+          <h2>Les saveurs du rituel jour : laquelle pour qui ?</h2>
+          <p>La gamme jour tourne autour de six saveurs gourmandes, dont l’assortiment exact évolue au fil des saisons sur la boutique. Les repères qui suivent aident à choisir sans se tromper.</p>
+          <ul>
+            <li><strong>Original :</strong> l’équilibre de référence, le bon point de départ pour un premier sachet.</li>
+            <li><strong>Cacao :</strong> le profil le plus chocolaté, pour ceux qui viennent du chocolat chaud plus que du café.</li>
+            <li><strong>Café :</strong> des notes torréfiées pour garder le geste et le goût du café en douceur.</li>
+            <li><strong>Café Decaf :</strong> le même registre torréfié, pensé pour ceux qui évitent la caféine.</li>
+            <li><strong>Chocolat Gourmand et Choco Noisette :</strong> les plus régressives, en tasse plaisir de l’après-midi.</li>
+            <li><strong>Rooibos Chaï :</strong> le profil épices douces, à l’aise avec un lait végétal en latte.</li>
+          </ul>
+        </section>
+
+        <div class="mid-card-wrap"><ReviewPromoCard product={promoProduct} /></div>
+
+        <section id="camomille-nuit" class="article-section rich-text">
+          <h2>Camomille : la saveur du rituel Nuit</h2>
+          <p>La Camomille est un cas à part, et c’est la saveur la plus recherchée après les classiques. Elle appartient au rituel <strong>Nuit</strong>, construit autour du reishi, de la passiflore, de la camomille, de l’anis vert et de la L-théanine : un registre infusion florale et apaisante, à des années-lumière du cacao du matin.</p>
+          <p>Elle s’adresse à ceux qui veulent un geste chaud le soir sans caféine tardive. Si votre objectif est le remplacement du café du matin, ce n’est pas par elle qu’il faut commencer ; si votre sujet est la fin de journée, c’est précisément elle qu’il faut regarder.</p>
+        </section>
+
+        <InnerNote emoji="🍫" text="Les profils décrits ici s’appuient sur les fiches de la marque et les retours clients publics, pas sur un test en laboratoire. Le goût reste personnel : la garantie 60 jours sur la première commande sert exactement à trancher." />
+
+        <section id="bien-choisir" class="article-section rich-text">
+          <h2>Bien choisir et bien préparer sa tasse</h2>
+          <p>Pour un premier achat, la méthode la plus sûre est de partir sur Original ou Cacao en format 30 tasses, éventuellement complété d’une deuxième saveur si vous passez sur un pack multi-sachets, les packs donnant droit à des cadeaux comme le mousseur à lait. Les saveurs se choisissent librement dans les formats et l’abonnement flexible.</p>
+          <p>Côté préparation, trois leviers changent tout : la dose de poudre, la température et la base liquide. À l’eau, la boisson reste légère ; avec un lait ou une boisson végétale moussée, elle se rapproche d’un latte. Testez la même saveur sur plusieurs jours et plusieurs préparations avant de juger, puis validez votre commande avec le code <strong>{config.promoCode}</strong> pour réduire le prix du premier essai.</p>
+        </section>
+
+        <section id="faq" class="faq-section"><FAQSection faq={faq} title="FAQ goût et saveurs Bonjour Drink" /></section>
+      </div>
+
+      <aside class="sidebar-column"><div class="sidebar-sticky"><SidebarCTA logoSrc={product.brandLogo} promoCode={product.promoCode} promoPercent={product.promoPercent} originalPrice={product.originalPrice} discountPrice={product.discountPrice} ctaLink={product.affiliateLink} heroImage={product.image} rating={product.rating} reviewCount={product.reviewCount} /></div></aside>
+    </div></div></div>
+  </main>
+  <ArticleGrid />
+</BaseLayout>
+
+<style>
+  .quick-card { background:#f8f4ec; border:1px solid #eadfce; border-radius:16px; padding:1.5rem; margin-bottom:2rem; }
+  .quick-card .eyebrow { color:#ef7a1a; font-family:'Archivo',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.06em; font-size:.78rem; margin:0 0 .45rem; }
+  .quick-card h2 { margin:0 0 .8rem; line-height:1.2; }
+  .quick-card p { margin:0; color:#444; line-height:1.7; }
+  .quick-card p + p { margin-top:.9rem; }
+  .article-section { margin-top:2.1rem; }
+  .article-section h2 { margin:0 0 .85rem; line-height:1.2; }
+  .article-section p { margin:0; line-height:1.72; color:#444; }
+  .article-section p + p { margin-top:1rem; }
+  .article-section ul { margin:1rem 0 0; padding-left:1.25rem; color:#444; line-height:1.7; }
+  .mid-card-wrap { margin:2rem 0 2.1rem; }
+  .faq-section { margin-top:3rem; }
+</style>

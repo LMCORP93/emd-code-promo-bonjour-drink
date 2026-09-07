@@ -23,6 +23,7 @@ export interface Product {
 }
 
 export interface SiteConfig {
+  language?: string;
   domain: string;
   isIndexable?: boolean;
   siteName: string;
@@ -55,10 +56,10 @@ const products: Product[] = [
     name: 'Rituel Bonjour Drink',
     brand: 'Bonjour Drink',
     slug: 'bonjour-drink',
-    image: 'https://cdn.prod.website-files.com/68c02c2c477fdd467e6e08a1/68d7c7d22051cb9faf0ade48_bonjour%20drink%202e%CC%80me%20image.avif',
+    image: 'https://cdn.prod.website-files.com/68c02c2c477fdd467e6e08a1/69fbbac94632e591e67920f1_69fbbac366f2e4ef2fa12228_lmc-bonjour-drink-photo-produit-phare-20260506.webp',
     brandLogo: 'https://cdn.prod.website-files.com/68c02c2c477fdd467e6e08a1/68d666ee3daf1b2e78ab7a9a_logo%20Bonjour%20Drink.svg',
     rating: 9.7,
-    reviewCount: 10000,
+    reviewCount: 20000,
     promoCode: 'LMC20',
     promoPercent: 20,
     originalPrice: '39,00 €',
@@ -84,6 +85,7 @@ const products: Product[] = [
 
 const config: SiteConfig = {
   domain: 'https://code-promo-bonjour-drink.fr',
+  language: 'fr',
   isIndexable: true,
   siteName: 'Code Promo Bonjour Drink',
   brand: products[0].brand,

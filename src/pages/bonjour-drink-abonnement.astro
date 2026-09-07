@@ -1,0 +1,147 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogHero from '@/components/BlogHero.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+import FAQSection from '@/components/FAQSection.astro';
+import InnerNote from '@/components/InnerNote.astro';
+import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
+import SidebarCTA from '@/components/SidebarCTA.astro';
+import ContentImage from '@/components/ContentImage.astro';
+import config from '@/data/site.config';
+import ArticleGrid from '@/components/ArticleGrid.astro';
+
+const product = config.products[0];
+const promoProduct = { ...product, productCategory: config.productCategory, shipping: 'France, Colissimo / Mondial Relay' };
+const pageTitle = 'Abonnement Bonjour Drink : fonctionnement, annulation';
+const pageUrl = `${config.domain}/bonjour-drink-abonnement/`;
+const pageDescription = 'Abonnement flexible Bonjour Drink : prix par tasse, cadeaux, pause et annulation jusqu’à 3 jours avant expédition, garantie 60 jours. Le guide complet.';
+const faq = [
+  { question: 'Comment fonctionne l’abonnement Bonjour Drink ?', answer: 'L’offre flexible est un abonnement sans engagement : vous choisissez un format de 30 à 120 tasses, vos saveurs et votre fréquence de livraison. La commande repart automatiquement à chaque échéance, avec un email de rappel envoyé avant l’expédition.' },
+  { question: 'Comment annuler l’abonnement Bonjour Drink ?', answer: 'L’annulation, la pause ou le report se font à tout moment depuis l’espace client. Selon les conditions générales de la marque, la demande doit intervenir au plus tard 3 jours avant l’expédition de la prochaine commande, un email de rappel étant envoyé avant chaque envoi.' },
+  { question: 'L’abonnement est-il vraiment sans engagement ?', answer: 'Oui, la marque présente l’offre flexible comme un abonnement mensuel sans engagement : modification des saveurs, de la quantité et de la fréquence à tout moment, pause et annulation incluses.' },
+  { question: 'Quels avantages par rapport à l’achat unique ?', answer: 'L’abonnement affiche un prix par tasse inférieur à l’achat unique, la livraison offerte et des cadeaux selon le nombre de sachets. Il conserve aussi l’accès à la garantie satisfait ou remboursé de 60 jours sur la première commande.' },
+  { question: 'Le code LMC20 fonctionne-t-il avec l’abonnement ?', answer: 'Le code partenaire s’applique dans le panier de la boutique officielle. Selon les conditions affichées par la marque, une réduction de bienvenue peut se cumuler avec le tarif abonnement sur la première commande. Vérifiez toujours le total affiché avant paiement.' },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: config.domain },
+      { '@type': 'ListItem', position: 2, name: 'Abonnement Bonjour Drink', item: pageUrl },
+    ],
+  })} />
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: pageTitle,
+    description: pageDescription,
+    url: pageUrl,
+    image: new URL('/images/bonjour-drink-abonnement-hero-v2.webp', config.domain).toString(),
+    author: { '@type': 'Person', name: config.author.name },
+    publisher: { '@type': 'Organization', name: config.siteName, logo: { '@type': 'ImageObject', url: new URL('/logo.svg', config.domain).toString() } },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+    datePublished: '2026-08-10',
+    dateModified: '2026-08-10',
+  })} />
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })),
+  })} />
+
+  <BlogHero
+    title={pageTitle}
+    description="Prix par tasse, cadeaux, fréquence, pause et annulation : le fonctionnement complet de l’abonnement flexible Bonjour Drink, avec les délais exacts prévus par les conditions de la marque."
+    author={config.author.name}
+    authorAvatar={config.author.avatar}
+    date="10 août 2026"
+    readingTime="5 min de lecture"
+    breadcrumbs={[{ label: 'Abonnement Bonjour Drink', href: '/bonjour-drink-abonnement/' }]}
+    bannerImage="/images/bonjour-drink-abonnement-hero-v2.webp"
+    product={{ name: product.name, image: product.image, promoCode: product.promoCode, promoPercent: product.promoPercent, originalPrice: product.originalPrice, discountPrice: product.discountPrice, affiliateLink: product.affiliateLink }}
+    showOfferBlock={false} heroButton={{ text: "Lire la suite", href: "#intro" }} />
+
+  <main style="background-color:#ffffff;">
+    <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
+      <div class="content-column">
+        <section id="intro" class="quick-card">
+          <p class="eyebrow">Réponse rapide</p>
+          <h2>L’abonnement Bonjour Drink en deux phrases</h2>
+          <p>L’offre flexible est un abonnement <strong>sans engagement</strong> : format de 30 à 120 tasses, saveurs et fréquence au choix, prix par tasse réduit, livraison offerte et cadeaux selon le pack. Tout se modifie, se met en pause ou s’annule depuis l’espace client.</p>
+          <p>Le seul vrai délai à retenir : selon les conditions générales, l’annulation ou le report d’une échéance doit se faire <strong>au plus tard 3 jours avant l’expédition</strong>, un email de rappel étant envoyé avant chaque envoi.</p>
+        </section>
+
+        <TableOfContents items={[
+          { id: 'fonctionnement', label: 'Fonctionnement' },
+          { id: 'prix-avantages', label: 'Prix et avantages' },
+          { id: 'annulation', label: 'Annuler ou suspendre' },
+          { id: 'garantie', label: 'Garantie 60 jours' },
+          { id: 'abo-ou-achat', label: 'Abonnement ou achat unique ?' },
+          { id: 'faq', label: 'FAQ' },
+        ]} />
+
+        <section id="fonctionnement" class="article-section rich-text">
+          <h2>Comment fonctionne l’offre flexible</h2>
+          <p>Au moment de la commande sur la boutique officielle, vous choisissez entre l’achat unique et l’abonnement flexible. En abonnement, vous définissez le format (30, 60, 90 ou 120 tasses), les saveurs et la fréquence de réception : tous les X mois, toutes les Y semaines ou tous les Z jours, selon votre rythme de consommation réel.</p>
+          <p>À chaque échéance, une commande identique repart automatiquement. La marque prévient par email avant l’expédition, ce qui laisse le temps d’ajuster : changer de saveur, décaler la date, suspendre ou annuler.</p>
+        </section>
+
+        <ContentImage
+          src="/images/bonjour-drink-hero-preparation.webp"
+          alt="Préparation d’une tasse de Bonjour Drink dans une routine du matin"
+        />
+
+        <section id="prix-avantages" class="article-section rich-text">
+          <h2>Prix et avantages de l’abonnement</h2>
+          <p>L’intérêt principal est le prix par tasse : les tarifs abonnement constatés au moment de la rédaction descendent autour de 0,76 à 1,04 € la tasse selon le format, contre un prix sensiblement plus élevé en achat unique. S’ajoutent la livraison offerte et des cadeaux par palier, du type livraison express, mousseur à lait ou cuillère doseuse selon le nombre de sachets.</p>
+          <p>Ces montants et dotations évoluent avec les offres de la marque : la page de commande fait foi. Le réflexe utile est de comparer, dans le panier, le total abonnement et le total achat unique avec le code <strong>{config.promoCode}</strong> appliqué.</p>
+        </section>
+
+        <div class="mid-card-wrap"><ReviewPromoCard product={promoProduct} /></div>
+
+        <section id="annulation" class="article-section rich-text">
+          <h2>Annuler, suspendre ou décaler : la marche à suivre</h2>
+          <p>Tout se gère depuis l’espace client de la boutique : pause, report de la prochaine échéance, changement de saveurs, de quantité ou de fréquence, et annulation définitive. Il n’y a pas de période minimale d’engagement dans l’offre présentée par la marque.</p>
+          <p>Le point de vigilance est le délai. Les conditions générales prévoient que l’annulation ou le report d’une commande à venir intervienne au plus tard <strong>3 jours avant son expédition</strong>. L’email de rappel envoyé avant chaque envoi sert exactement à ça : ne le laissez pas passer si vous souhaitez ajuster. En cas de doute, le service client, annoncé disponible 7j/7, se joint par email.</p>
+        </section>
+
+        <InnerNote emoji="📌" text="Ce site est un guide indépendant financé par affiliation, pas le support officiel. Pour toute demande sur un abonnement en cours, contactez directement Bonjour Drink depuis votre espace client." />
+
+        <section id="garantie" class="article-section rich-text">
+          <h2>Garantie 60 jours : ce qu’elle couvre vraiment</h2>
+          <p>La garantie satisfait ou remboursé de 60 jours mise en avant par la marque s’applique à la <strong>première commande</strong>, et les conditions générales précisent qu’elle couvre le premier pack ouvert de cette commande, les autres devant rester intacts pour un retour.</p>
+          <p>C’est une nuance importante pour les abonnés : la garantie sécurise le premier essai, pas chaque livraison mensuelle. Pour tester le produit dans de bonnes conditions, un premier format 30 tasses suffit à se faire un avis avant de laisser courir l’abonnement.</p>
+        </section>
+
+        <section id="abo-ou-achat" class="article-section rich-text">
+          <h2>Abonnement ou achat unique : notre lecture</h2>
+          <p>Si vous découvrez le produit, commencez simple : une première commande avec le code <strong>{config.promoCode}</strong>, le temps de valider le goût et la tolérance sur plusieurs jours. La garantie 60 jours couvre précisément ce scénario.</p>
+          <p>Si la routine s’installe, l’abonnement flexible devient l’option rationnelle : prix par tasse plus bas, livraison offerte et aucun engagement puisqu’il s’annule à tout moment dans le délai des 3 jours. Notre page sur les saveurs aide à composer un pack qui ne lasse pas.</p>
+        </section>
+
+        <section id="faq" class="faq-section"><FAQSection faq={faq} title="FAQ abonnement Bonjour Drink" /></section>
+      </div>
+
+      <aside class="sidebar-column"><div class="sidebar-sticky"><SidebarCTA logoSrc={product.brandLogo} promoCode={product.promoCode} promoPercent={product.promoPercent} originalPrice={product.originalPrice} discountPrice={product.discountPrice} ctaLink={product.affiliateLink} heroImage={product.image} rating={product.rating} reviewCount={product.reviewCount} /></div></aside>
+    </div></div></div>
+  </main>
+  <ArticleGrid />
+</BaseLayout>
+
+<style>
+  .quick-card { background:#f8f4ec; border:1px solid #eadfce; border-radius:16px; padding:1.5rem; margin-bottom:2rem; }
+  .quick-card .eyebrow { color:#ef7a1a; font-family:'Archivo',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.06em; font-size:.78rem; margin:0 0 .45rem; }
+  .quick-card h2 { margin:0 0 .8rem; line-height:1.2; }
+  .quick-card p { margin:0; color:#444; line-height:1.7; }
+  .quick-card p + p { margin-top:.9rem; }
+  .article-section { margin-top:2.1rem; }
+  .article-section h2 { margin:0 0 .85rem; line-height:1.2; }
+  .article-section p { margin:0; line-height:1.72; color:#444; }
+  .article-section p + p { margin-top:1rem; }
+  .article-section ul { margin:1rem 0 0; padding-left:1.25rem; color:#444; line-height:1.7; }
+  .mid-card-wrap { margin:2rem 0 2.1rem; }
+  .faq-section { margin-top:3rem; }
+</style>

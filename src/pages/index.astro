@@ -19,7 +19,7 @@ const promoProduct = {
   productCategory: config.productCategory,
   shipping: 'France, Colissimo / Mondial Relay',
 };
-const heroImage = '/images/bonjour-drink-hero-preparation.png';
+const heroImage = '/images/bonjour-drink-hero-preparation.webp';
 
 const toAbsoluteUrl = (value: string) => /^https?:\/\//i.test(value) ? value : new URL(value, config.domain).toString();
 const numericPrice = (value: string) => String(value ?? '').replace(',', '.').replace(/[^\d.]/g, '');
@@ -110,8 +110,7 @@ const productSchema = (p: typeof config.products[number]) => ({
       originalPrice: product.originalPrice,
       discountPrice: product.discountPrice,
       affiliateLink: product.affiliateLink,
-    }}
-  />
+    }} />
 
   <main style="background-color: #fcfbf7;">
     <div class="container-large padding-global">
@@ -157,7 +156,7 @@ const productSchema = (p: typeof config.products[number]) => ({
             </section>
 
             <ContentImage
-              src="/images/bonjour-drink-editorial-routine.png"
+              src="/images/bonjour-drink-editorial-routine.webp"
               alt="Routine matinale avec boisson chaude type café adaptogène"
               caption="L’intérêt de Bonjour Drink est de remplacer un rituel café par une option plus douce, pas de promettre un effet miracle."
             />
@@ -190,7 +189,7 @@ const productSchema = (p: typeof config.products[number]) => ({
             </section>
 
             <ContentImage
-              src="/images/bonjour-drink-editorial-ingredients.png"
+              src="/images/bonjour-drink-editorial-ingredients.webp"
               alt="Ingrédients naturels pour une boisson cacao adaptogène"
               caption="Un visuel éditorial plus neutre évite de répéter le même packshot produit partout sur la page."
             />
@@ -263,7 +262,6 @@ const productSchema = (p: typeof config.products[number]) => ({
 <style>
   .seo-block {
     padding-top: 1.5rem;
-    border-top: 1px solid #f0ebe3;
   }
   .faq-section { margin-top: 1.5rem; }
   .blog-grid {

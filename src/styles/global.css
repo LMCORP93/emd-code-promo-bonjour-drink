@@ -305,7 +305,7 @@ html {
   transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 .btn-solid:hover {
-  background-color: #d66a12;
+  background-color: #ef7a1a;
   transform: translateY(-1px);
   box-shadow: 0 1px 3px rgba(36, 24, 12, 0.12);
   color: #ffffff;
@@ -363,7 +363,7 @@ html {
 }
 .btn-dashed:hover {
   background-color: rgba(239, 122, 26, 0.06);
-  border-color: #ff8c2e;
+  border-color: #ef7a1a;
 }
 .btn-dashed:active {
   background-color: rgba(239, 122, 26, 0.12);
@@ -450,5 +450,5 @@ main .internal-linking-note a {
 .content-column p a:hover,
 main article p a:hover,
 main .internal-linking-note a:hover {
-  color: #d66a12;
+  color: #ef7a1a;
 }

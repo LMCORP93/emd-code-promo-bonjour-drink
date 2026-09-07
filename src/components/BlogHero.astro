@@ -1,4 +1,5 @@
 ---
+import config from '@/data/site.config';
 import PromoCodeButton from './PromoCodeButton.astro';
 
 interface HeroProduct {
@@ -53,7 +54,19 @@ const contentKey = `${normalizedPath} ${title} ${description}`
   .toLowerCase();
 const isHomePage = normalizedPath === '/';
 const isPromoIntent = /code|promo|coupon|cupon|cup[oó]n|rabatt|discount|korting|reduction|remise/.test(contentKey);
+const getTldLang = () => {
+  const explicit = String((config as any).language || '').toLowerCase().slice(0, 2);
+  if (explicit) return explicit;
+  try { return new URL(config.domain).hostname.split('.').pop() || ''; } catch { return String(config.domain || '').split('.').pop() || ''; }
+};
 const getReadArticleText = () => {
+  const tld = getTldLang();
+  if (tld === 'de') return 'Artikel lesen';
+  if (tld === 'nl') return 'Artikel lezen';
+  if (tld === 'fr') return 'Lire l’article';
+  if (tld === 'es') return 'Leer el artículo';
+  if (tld === 'it') return 'Leggi l’articolo';
+  if (tld === 'en' || tld === 'com') return 'Read article';
   if (/\b(es|espana|comprar|beneficios|contraindicaciones|opiniones|preparar)\b/.test(contentKey)) return 'Leer el artículo';
   if (/\b(italia|caffe|controindicazioni|leggi)\b/.test(contentKey)) return "Leggi l'articolo";
   if (/\b(erfahrungen|wirkung|nebenwirkungen|kaufen|deutschland|test|pruefungsangst|muedigkeit)\b/.test(contentKey)) return 'Artikel lesen';
@@ -61,9 +74,9 @@ const getReadArticleText = () => {
   if (/\b(best|reviews|benefits|side effects|caffeine|women|men|dosage)\b/.test(contentKey)) return 'Read article';
   return "Lire l’article";
 };
-const readArticleButton = { text: getReadArticleText(), href: '#intro', external: false };
+const readArticleButton = { text: 'Lire l’article', href: '#intro', external: false };
 const effectiveShowOfferBlock = Boolean(product && showOfferBlock && (isHomePage || isPromoIntent));
-const effectiveHeroButton = !isHomePage && !isPromoIntent ? readArticleButton : heroButton;
+const effectiveHeroButton = heroButton ?? (!isHomePage && !isPromoIntent ? readArticleButton : undefined);
 
 const displayAuthor = /Tim Reviews?/i.test(author) ? 'Tim' : author;
 ---

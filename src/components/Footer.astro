@@ -1,231 +1,82 @@
 ---
-interface NavLink {
-  label: string;
-  href: string;
-}
-
-interface FooterColumn {
-  title: string;
-  links: NavLink[];
-}
-
+interface NavLink { label: string; href: string; }
 interface Props {
-  siteName: string;
-  logoSrc: string;
-  navLinks?: NavLink[];
-  copyright: string;
-  columns?: FooterColumn[];
-  year?: number;
+  siteName: string; logoSrc: string; navLinks?: NavLink[];
+  copyright: string; tagline?: string; year?: number;
 }
+const { siteName, logoSrc, navLinks = [], copyright, tagline = "", year = new Date().getFullYear() } = Astro.props;
 
-const {
-  siteName,
-  logoSrc,
-  navLinks = [],
-  copyright,
-  columns,
-  year = new Date().getFullYear(),
-} = Astro.props;
+const reservedFooterRoutes = new Set(["/", "/contact", "/mentions-legales/", "/politique-de-confidentialite/"]);
+const guideLinks = navLinks.filter((link) => !reservedFooterRoutes.has(link.href) && !/^\/(mentions-legales|legal-notice|impressum|aviso|aviso-legal|note-legali|juridische-kennisgeving|politique-de-confidentialite|privacy-policy|datenschutz|politica-de-privacidad|politica-privacidad|informativa-privacy|privacybeleid|privacy)\/?$/.test(link.href));
 
-const reservedFooterRoutes = new Set([
-  "/",
-  "/contact",
-  "/mentions-legales",
-  "/politique-de-confidentialite",
-]);
-
-const guideLinks = navLinks
-  .filter((link) => !['/contact', '/mentions-legales', '/politique-de-confidentialite'].includes(link.href))
-  .slice(0, 6);
-
-// Legal / information links
 const infoLinks: NavLink[] = [
-  { label: 'Politique de confidentialité', href: '/politique-de-confidentialite' },
-  { label: 'Mentions légales', href: '/mentions-legales' },
-  { label: 'Contact', href: '/telephone-bonjour-drink/' },
+  { label: 'Mentions légales', href: '/mentions-legales/' },
+  { label: 'Politique de confidentialité', href: '/politique-de-confidentialite/' },
+  { label: 'Contact', href: 'mailto:hello@le-meilleur-complement.fr' },
 ];
 ---
 
-<footer class="footer">
-  <div class="footer_container">
-    <!-- 2-column grid: links only -->
-    <div class="footer_grid">
-
-      <!-- Column 1: Nos Guides -->
-      <div class="footer_colonne">
-        <div class="footer_col-title">Nos Guides</div>
-        <div class="footer_wrapper-links">
-          {guideLinks.length > 0 ? guideLinks.map((link) => (
-            <a href={link.href} class="footer_link">
-              {link.label}
-            </a>
-          )) : (
-            <span class="footer_link--placeholder">Bientôt disponible…</span>
-          )}
-        </div>
+<footer class="pf">
+  <div class="pf_card">
+    <div class="pf_top">
+      <div class="pf_brand">
+        <a href="/" class="pf_logo-link" aria-label={siteName}>
+          <img src={logoSrc} alt={siteName} class="pf_logo" width="150" height="48" />
+        </a>
+        {tagline && <p class="pf_tag">{tagline}</p>}
       </div>
-
-      <!-- Column 2: Informations -->
-      <div class="footer_colonne">
-        <div class="footer_col-title">Informations</div>
-        <div class="footer_wrapper-links">
-          {infoLinks.map((link) => (
-            <a href={link.href} class="footer_link">
-              {link.label}
-            </a>
-          ))}
+      <nav class="pf_nav" aria-label="Footer">
+        <div class="pf_col">
+          <span class="pf_col-title">Nos guides</span>
+          <div class="pf_links pf_links--multi">
+            {guideLinks.map((link) => (
+              <a href={link.href} class="pf_link">{link.label}</a>
+            ))}
+          </div>
         </div>
-      </div>
-
+      </nav>
     </div>
 
-    <p class="footer_medical-disclaimer">Les informations publiées sont à caractère informatif et ne se substituent en aucun cas à un avis médical. Consultez un professionnel de santé avant tout usage de compléments alimentaires, notamment en cas de pathologie, traitement, grossesse ou allaitement.</p>
+    <div class="pf_divider"></div>
 
-    <!-- Bottom sub-footer: logo + copyright aligned on same row -->
-    <div class="footer_sub">
-      <a href="/" class="footer_logo-link">
-        <img src={logoSrc} alt={siteName} class="footer_logo" />
-      </a>
-      <p class="footer_copyright">© {year} {copyright}</p>
+    <div class="pf_sub">
+      <p class="pf_copy">© {year} {copyright}</p>
+      <div class="pf_legal">
+        {infoLinks.map((link) => link.href.startsWith('mailto:') ? (
+          <>
+            <Fragment set:html={'<!--email_off-->'} />
+            <a href={link.href} class="pf_legal-link">{link.label}</a>
+            <Fragment set:html={'<!--/email_off-->'} />
+          </>
+        ) : (
+          <a href={link.href} class="pf_legal-link">{link.label}</a>
+        ))}
+      </div>
     </div>
   </div>
 </footer>
 
 <style>
-  /* ── Footer root ── */
-  .footer {
-    background-color: #f4f2ec;
-    color: #242424;
-    padding: 3rem 1.5rem 2rem;
-  }
-
-  /* ── Container ── */
-  .footer_container {
-    max-width: 72rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* ── 2-column grid ── */
-  .footer_grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
-
-  /* ── Column ── */
-  .footer_colonne {
-    display: flex;
-    flex-flow: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 1rem;
-    text-align: left;
-    align-self: start;
-  }
-
-  /* ── Column title ── */
-  .footer_col-title {
-    font-family: 'Archivo', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #242424;
-    opacity: 1;
-  }
-
-  /* ── Links wrapper ── */
-  .footer_wrapper-links {
-    display: flex;
-    flex-flow: column;
-    gap: 0.5rem;
-  }
-
-  /* ── Link ── */
-  .footer_link {
-    color: #333;
-    font-size: 14px;
-    text-decoration: none;
-    opacity: 0.7;
-    transition: opacity 0.2s;
-  }
-  .footer_link:hover {
-    opacity: 0.7;
-    color: #ef7a1a;
-  }
-
-  .footer_link--placeholder {
-    font-size: 14px;
-    color: #999;
-    font-style: italic;
-  }
-
-  /* ── Sub footer: logo + copyright on same line ── */
-  .footer_sub {
-    margin-top: 2.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-
-  /* ── Logo link ── */
-  .footer_logo-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-  }
-
-  .footer_logo {
-    width: 5.25rem;
-    height: 5.25rem;
-    object-fit: contain;
-  }
-
-
-  .footer_medical-disclaimer {
-    max-width: 56rem;
-    margin: 2rem 0 0;
-    padding-top: 1.25rem;
-    border-top: 1px solid rgba(36, 36, 36, 0.12);
-    color: #555;
-    font-size: 12px;
-    line-height: 1.6;
-    opacity: 0.78;
-  }
-
-  .footer_copyright {
-    margin: 0;
-    font-size: 12px;
-    color: #555;
-    opacity: 0.6;
-  }
-
-  /* ── Responsive: mobile (≤767px) → flex column ── */
-  @media (max-width: 767px) {
-    .footer_grid {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .footer_colonne {
-      text-align: left;
-      justify-content: flex-start;
-      align-items: flex-start;
-    }
-
-    .footer_sub {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.75rem;
-    }
-
-    .footer_logo {
-      width: 6rem;
-      height: 6rem;
-    }
-  }
+  .pf { background-color: #f4f2ec; padding: 3rem 1.5rem; }
+  .pf_card { max-width: 72rem; margin: 0 auto; background: #ffffff; border-radius: 1rem; border: none; box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.05); padding: 3rem 3rem 1.75rem; }
+  .pf_top { display: flex; justify-content: space-between; gap: 3rem; flex-wrap: wrap; }
+  .pf_brand { flex: 1 1 16rem; min-width: 14rem; max-width: 26rem; }
+  .pf_logo-link { display: inline-flex; text-decoration: none; }
+  .pf_logo { height: 3rem; width: auto; object-fit: contain; }
+  .pf_tag { margin: 1rem 0 0; color: #6b6b6b; font-size: 0.9375rem; line-height: 1.6; max-width: 24rem; }
+  .pf_nav { display: flex; gap: 3.5rem; flex: 1 1 auto; justify-content: flex-end; flex-wrap: wrap; }
+  .pf_col { display: flex; flex-direction: column; gap: 0.9rem; }
+  .pf_col-title { font-family: 'Archivo', sans-serif; font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #242424; }
+  .pf_links { display: flex; flex-direction: column; gap: 0.7rem; }
+  .pf_links--multi { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem 2.5rem; }
+  .pf_link { color: #4a4a4a; font-size: 0.9375rem; text-decoration: none; transition: color 0.15s; }
+  .pf_link:hover { color: #ef7a1a; }
+  .pf_divider { height: 1px; background: rgba(0,0,0,0.08); margin: 2.5rem 0 1.5rem; }
+  .pf_sub { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .pf_copy { margin: 0; font-size: 0.8125rem; color: #8a8a8a; }
+  .pf_legal { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem 1.25rem; }
+  .pf_legal-link { font-size: 0.8125rem; color: #6b6b6b; text-decoration: none; transition: color 0.15s; }
+  .pf_legal-link:hover { color: #ef7a1a; }
+  @media (max-width: 860px) { .pf_top { flex-direction: column; gap: 2.25rem; } .pf_nav { justify-content: flex-start; gap: 2.5rem; } }
+  @media (max-width: 560px) { .pf { padding: 2rem 1rem; } .pf_card { padding: 2rem 1.5rem 1.5rem; } .pf_links--multi { grid-template-columns: 1fr; } .pf_sub { flex-direction: column; align-items: flex-start; gap: 0.9rem; } }
 </style>
